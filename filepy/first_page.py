@@ -18,7 +18,7 @@ def account():
             </body > <html > '''
 
         return page
-    print request.form
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
