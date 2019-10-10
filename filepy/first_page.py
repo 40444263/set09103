@@ -1,7 +1,7 @@
 from flask import *
 app = Flask(__name__)
 
-@app.route("/ account /", methods =['POST','GET'])
+@app.route("/account/", methods =['POST','GET'])
 def account():
     if request.method == 'POST':
         print request.form
@@ -11,9 +11,9 @@ def account():
         page = '''
         <html ><body >
             <form action ="" method =" post " name =" form " >
-                <label for =" name " > Name : </ label >
-                <input type =" text " name =" name " id =" name "/ >
-                <input type =" submit " name =" submit " id =" submit "/ >
+                <label for ="name" > Name : </ label >
+                <input type ="text" name ="name" id =" name "/ >
+                <input type ="submit" name ="submit" id ="submit"/ >
             </form >
             </body > <html > '''
 
