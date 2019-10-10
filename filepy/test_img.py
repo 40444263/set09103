@@ -7,7 +7,7 @@ def hello():
 
 @app.route('/static-example/img')
 def static_example_img():
-    start = '<img src="../set09103/img'
+    start = '<img src="../img'
     url = url_for('static',filename='vmask.jpg')
     end = '">'
     return start + url + end,200 
