@@ -5,7 +5,7 @@ app = Flask(__name__)
 def account():
     if request.method == 'POST':
         print request.form
-        name = request.form
+        name = request.form['name']
         return "Hello %s" % name
     else:
         page = '''
