@@ -7,16 +7,16 @@ def display () :
 
 @app . route ("/upload/", methods =[ 'POST','GET'])
 def account () :
-    if request . method == 'POST ':
-        f = request . files ['datafile']
-        f . save ('static/uploads/file.png')
+    if request.method == 'POST':
+        f = request.files['datafile']
+        f.save ('static/uploads/file.png')
         return " File Uploaded "
     else :
         page = '''
         <html >
         <body >
-        <form action ="" method="post" name="form" enctype="multipart/
-            form-data">
+        <form action ="" method="post" name="form" enctype="multipart/form-data">
+
             <input type="file" name="datafile"/>
             <input type ="submit" name ="submit" id ="submit"/>
         </form>
