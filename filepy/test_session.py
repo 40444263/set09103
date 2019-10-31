@@ -31,5 +31,5 @@ def init(app):
 if __name__ == '__main__ ':
     init(app)
     app.run(
-    host = app.config ['ip_address'],
-    port=int(app.config['port']))
+        host = app.config['ip_address'],
+        port= int(app.config['port']))
