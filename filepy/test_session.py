@@ -28,8 +28,7 @@ def init(app):
     except :
         print "Could not read configs from : ", config_location
 
-if __name__ == '__main__ ':
+if __name__ == "__main__":
+    print "ici"
     init(app)
-    app.run(
-        host = app.config['ip_address'],
-        port= int(app.config['port']))
+    app.run(host = app.config['ip_address'],port= int(app.config['port']))
