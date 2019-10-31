@@ -9,11 +9,11 @@ def root ():
 @app.route('/config/')
 def config():
     str = []
-    str. append ('Debug :'+ app . config ['DEBUG '])
-    str. append ('port :'+ app . config ['port '])
-    str. append ('url:'+ app . config ['url '])
-    str. append ('ip_address :'+ app . config ['ip_address '])
-    return '\t'. join (str )
+    str.append ('Debug :'+ app.config ['DEBUG '])
+    str.append ('port :'+ app.config ['port '])
+    str.append ('url:'+ app.config ['url '])
+    str.append ('ip_address :'+ app.config ['ip_address '])
+    return '\t'.join(str)
 
 def init(app):
     config = ConfigParser.ConfigParser()
