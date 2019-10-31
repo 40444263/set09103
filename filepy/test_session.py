@@ -9,17 +9,17 @@ def root ():
 @app.route('/config/')
 def config():
     str = []
-    str.append ('Debug :'+ app.config ['DEBUG'])
-    str.append ('port :'+ app.config ['port'])
-    str.append ('url:'+ app.config ['url'])
-    str.append ('ip_address :'+ app.config ['ip_address'])
+    str.append('Debug :'+ app.config['DEBUG'])
+    str.append('port :'+ app.config['port'])
+    str.append('url:'+ app.config['url'])
+    str.append('ip_address :'+ app.config['ip_address'])
     return '\t'.join(str)
 
 def init(app):
     config = ConfigParser.ConfigParser()
     try:
         config_location = "etc/ defaults .cfg"
-        config.read ( config_location )
+        config.read config_location)
 
         app.config ['DEBUG'] = config.get ("config", "debug")
         app.config ['ip_address'] = config.get ("config", "ip_address")
