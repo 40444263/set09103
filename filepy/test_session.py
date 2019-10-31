@@ -1,35 +1,30 @@
-import ConfigParser
-from flask import Flask
-app = Flask (__name__)
-@app.route ('/')
-def root ():
+from flask import Flask , session
 
-    return " Hello Napier from the configuration testing app "
+app = Flask ( __name__ )
+app.secret_key = 'A0Zr98j /3 yX R~XHH!jmN]LWX / ,? RT '
 
-@app.route('/config/')
-def config():
-    str = []
-    str.append('Debug :'+ app.config['DEBUG'])
-    str.append('port :'+ app.config['port'])
-    str.append('url:'+ app.config['url'])
-    str.append('ip_address :'+ app.config['ip_address'])
-    return '\t'.join(str)
+@app . route ('/')
+def index () :
+    return "Root route for the sessions example "
 
-def init(app):
-    config = ConfigParser.ConfigParser()
+@app . route ('/session/write/<name>/')
+def write(name = None ) :
+    session['name'] = name
+    return " Wrote %s into 'name ' key of session " % name
+
+@app . route ('/session/read/')
+def read () :
     try:
-        print "config read"
-        config_location = "etc/defaults.cfg"
-        config.read(config_location)
-        app.config['DEBUG'] = config.get("config", "debug")
-        app.config['ip_address'] = config.get("config", "ip_address")
-        app.config['port'] = config.get("config ", "port")
-        app.config['url'] = config.get("config", "url")
-    except :
-        print "Could not read configs from : ", config_location
+        if(session ['name']) :
+            return str(session['name'])
+    except KeyError:
+        pass
+    return "No session variable set for 'name ' key "
 
-if __name__ == '__main__ ':
-    init(app)
-    app.run(
-        host = app.config['ip_address'],
-        port= int(app.config['port']))
+@app . route ('/ session / remove /')
+def remove () :
+    session . pop ('name ', None )
+    return " Removed key 'name ' from session "
+
+if __name__ == " __main__ ":
+    app.run(host ='0.0.0.0 ', debug = True )
