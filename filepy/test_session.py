@@ -21,17 +21,10 @@ def read () :
         pass
     return "No session variable set for 'name ' key "
 
-@app . route ('/ session / remove /')
+@app . route ('/session/remove/')
 def remove () :
     session . pop ('name ', None )
     return " Removed key 'name ' from session "
 
-<<<<<<< HEAD
-if __name__ == " __main__ ":
-    app.run(host ='0.0.0.0 ', debug = True )
-=======
 if __name__ == "__main__":
-    print "ici"
-    init(app)
-    app.run(host = app.config['ip_address'],port= int(app.config['port']))
->>>>>>> 2f914bf3528f814bc41e4ea71ff8bb6929b0d6c2
+    app.run(host ='0.0.0.0',debug=True)
