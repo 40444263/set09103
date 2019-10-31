@@ -27,8 +27,9 @@ def init(app):
         app.config['url'] = config.get("config", "url")
     except :
         print "Could not read configs from : ", config_location
+
 if __name__ == '__main__ ':
-    init ( app )
+    init(app)
     app.run(
     host = app.config ['ip_address'],
     port=int(app.config['port']))
