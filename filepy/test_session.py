@@ -18,9 +18,9 @@ def config():
 def init(app):
     config = ConfigParser.ConfigParser()
     try:
+        print "config read"
         config_location = "etc/defaults .cfg"
         config.read(config_location)
-
         app.config['DEBUG'] = config.get("config", "debug")
         app.config['ip_address'] = config.get("config", "ip_address")
         app.config['port'] = config.get("config ", "port")
