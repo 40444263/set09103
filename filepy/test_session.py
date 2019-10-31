@@ -7,12 +7,12 @@ app.secret_key = 'A0Zr98j /3 yX R~XHH!jmN]LWX / ,? RT '
 def index () :
     return "Root route for the sessions example "
 
-@app . route ('/session/write/<name>/')
-def write(name = None ) :
+@app.route ('/session/write/<name>/')
+def write(name = None) :
     session['name'] = name
     return " Wrote %s into 'name ' key of session " % name
 
-@app . route ('/session/read/')
+@app.route ('/session/read/')
 def read () :
     try:
         if(session ['name']) :
@@ -21,9 +21,9 @@ def read () :
         pass
     return "No session variable set for 'name ' key "
 
-@app . route ('/session/remove/')
+@app.route ('/session/remove/')
 def remove () :
-    session . pop ('name ', None )
+    session.pop ('name ', None )
     return " Removed key 'name ' from session "
 
 if __name__ == "__main__":
