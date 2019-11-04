@@ -9,9 +9,22 @@ def root():
 def home():
     return render_template("home.html")
 
+
+@app.route("/play")
+def play():
+
+
+
 @app.route("/map")
 def map():
-    return "ok"
+    return "Map a faire"
 
+@app.route("/commands")
+def commands():
+    return "Commands a faire"
+
+@app.route("/characters")
+def characters():
+    return "characters a faire"
 if __name__ == " __main__ ":
     app.run ( host ='0.0.0.0 ', debug = True )
