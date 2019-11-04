@@ -12,7 +12,7 @@ def home():
 
 @app.route("/play")
 def play():
-
+    pass
 
 
 @app.route("/map")
