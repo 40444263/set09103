@@ -57,9 +57,9 @@ def main():
     if connection is not None:
         # create projects table
         creation_table(connection, table_game)
-        creation_table(connconnection, table_characters)
-        creation_table(connconnection, table_map)
-        creation_table(connconnection, table_match)
+        creation_table(connection, table_characters)
+        creation_table(connection, table_map)
+        creation_table(connection, table_match)
     else:
         print("no connection.")
 
