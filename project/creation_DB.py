@@ -56,12 +56,12 @@ def main():
     # create tables
     if connection is not None:
         # create projects table
-        create_table(connection, table_game)
-        create_table(connconnection, table_characters)
-        create_table(connconnection, table_map)
-        create_table(connconnection, table_match)
+        creation_table(connection, table_game)
+        creation_table(connconnection, table_characters)
+        creation_table(connconnection, table_map)
+        creation_table(connconnection, table_match)
     else:
-        print("Error! cannot create the database connection.")
+        print("no connection.")
 
 if __name__ == '__main__':
     main()
