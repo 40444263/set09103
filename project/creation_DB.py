@@ -19,6 +19,7 @@ def creation_table(connect,creation_table):
         print(e)
         raise e
 def main():
+    path = r"\static\game.db"
 
     table_game == """CREATE TABLE 'game' (
                 	'Name' TEXT(20) DEFAULT 'The web tech smash',
@@ -27,7 +28,40 @@ def main():
                 	'NbWinPlayer2' INT(8),
                 	'AverageTime' INT(20),
                 	PRIMARY KEY ('Name'));"""
-    table_
+
+    table_characters == """CREATE TABLE 'Characters' (
+                    	'id' INT(5) NOT NULL AUTO_INCREMENT,
+                    	'Name' TEXT,
+                    	'Path picture' TEXT,
+                    	'NbUse' INT(10),
+                    	PRIMARY KEY ('id'));"""
+
+    table_map == """CREATE TABLE 'Map' (
+                    	'id' INT(5) NOT NULL AUTO_INCREMENT,
+                    	'Name' TEXT,
+                    	'Path picture' TEXT,
+                    	'NbUse' INT(10),
+                    	PRIMARY KEY ('id'));"""
+    table_match = """CREATE TABLE 'Match' (
+	                   'Player1Win' BOOLEAN,
+                    	'Player2Win' BOOLEAN,
+                    	'NbHitPlayer1' INT,
+                    	'NbHitPlayer2' INT,
+                    	'Time' INT,
+                    	'ID' INT NOT NULL AUTO_INCREMENT,
+                    	PRIMARY KEY ('ID'));"""
+
+    connection = create_connection(path)
+
+    # create tables
+    if connection is not None:
+        # create projects table
+        create_table(connection, table_game)
+        create_table(connconnection, table_characters)
+        create_table(connconnection, table_map)
+        create_table(connconnection, table_match)
+    else:
+        print("Error! cannot create the database connection.")
 
 if __name__ == '__main__':
-    create_connection(r"game.db")
+    main()
