@@ -30,14 +30,14 @@ def main():
                 	PRIMARY KEY ('Name'));"""
 
     table_characters = """CREATE TABLE IF NOT EXISTS 'Characters'(
-                    	'id' INT(5) NOT NULL AUTO_INCREMENT,
+                    	'id' INT(5) NOT NULL,
                     	'Name' TEXT,
                     	'Path picture' TEXT,
                     	'NbUse' INT(10),
                     	PRIMARY KEY ('id'));"""
 
     table_map = """CREATE TABLE IF NOT EXISTS 'Map' (
-                    	'id' INT(5) NOT NULL AUTO_INCREMENT,
+                    	'id' INT(5) NOT NULL ,
                     	'Name' TEXT,
                     	'Path picture' TEXT,
                     	'NbUse' INT(10),
@@ -48,7 +48,7 @@ def main():
                     	'NbHitPlayer1' INT,
                     	'NbHitPlayer2' INT,
                     	'Time' INT,
-                    	'ID' INT NOT NULL AUTO_INCREMENT,
+                    	'ID' INT NOT NULL,
                     	PRIMARY KEY ('ID'));"""
 
     connection = create_connection(path)
