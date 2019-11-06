@@ -21,7 +21,7 @@ def creation_table(connect,creation_table):
 def main():
     path = r"\static\game.db"
 
-    table_game = """CREATE TABLE IF NOT EXIST 'game'(
+    table_game = """CREATE TABLE IF NOT EXISTS 'game'(
                 	'Name' TEXT(20) DEFAULT 'The web tech smash',
                 	'Nbgame' INT(8),
                 	'NbWinPlayer1' INT(8),
@@ -29,20 +29,20 @@ def main():
                 	'AverageTime' INT(20),
                 	PRIMARY KEY ('Name'));"""
 
-    table_characters = """CREATE TABLE IF NOT EXIST 'Characters'(
+    table_characters = """CREATE TABLE IF NOT EXISTS 'Characters'(
                     	'id' INT(5) NOT NULL AUTO_INCREMENT,
                     	'Name' TEXT,
                     	'Path picture' TEXT,
                     	'NbUse' INT(10),
                     	PRIMARY KEY ('id'));"""
 
-    table_map = """CREATE TABLE IF NOT EXIST 'Map' (
+    table_map = """CREATE TABLE IF NOT EXISTS 'Map' (
                     	'id' INT(5) NOT NULL AUTO_INCREMENT,
                     	'Name' TEXT,
                     	'Path picture' TEXT,
                     	'NbUse' INT(10),
                     	PRIMARY KEY ('id'));"""
-    table_match = """CREATE TABLE IF NOT EXIST 'Match' (
+    table_match = """CREATE TABLE IF NOT EXISTS 'Match' (
 	                   'Player1Win' BOOLEAN,
                     	'Player2Win' BOOLEAN,
                     	'NbHitPlayer1' INT,
