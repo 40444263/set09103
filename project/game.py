@@ -2,8 +2,8 @@ import pygame
 
 def main():
     pygame.init()
-    screen = pygame.display.set_mode([800,800], 0, 32)
-    pygame.display.set_caption("Go_Online")
+    pygame.display.set_caption("Go_online")
+    screen = pygame.display.set_mode( 0, 32,)
     print("mkfnsgfnedsgojfdns")
 
 
