@@ -1,4 +1,5 @@
 from flask import *
+import pygame
 app = Flask(__name__)
 
 @app.route("/")
@@ -12,7 +13,7 @@ def home():
 
 @app.route("/play")
 def play():
-    pass
+    return pygame.examples.aliens
 
 
 @app.route("/map")
