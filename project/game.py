@@ -1,11 +1,15 @@
+import os
 import pygame
+os.environ['SDL_VIDEODRIVER'] = 'dummy'
 
 def main():
     pygame.init()
-    screen = pygame.display.set_mode([800,800], 0, 32)
-    pygame.display.set_caption("Go_Online")
-    print("mkfnsgfnedsgojfdns")
+    pygame.display.set_mode((1,1))
 
+    while 1:
+        events = pygame.event.get()
+        for e in events:
+            pass
 
 if __name__ == '__main__':
     main()
