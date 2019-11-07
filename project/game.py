@@ -4,7 +4,9 @@ os.environ['SDL_VIDEODRIVER'] = 'dummy'
 
 def main():
     pygame.init()
-    pygame.display.set_mode((1,1))
+    fenetre = pygame.display.set_mode((1,1))
+    perso = pygame.image.load("perso.png").convert()
+    fenetre.blit(perso, (200,300))
 
     while 1:
         events = pygame.event.get()
