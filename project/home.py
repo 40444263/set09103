@@ -12,7 +12,7 @@ def home():
 
 @app.route("/play")
 def play():
-    render_template("game.html")
+    return render_template("game.html")
 
 
 @app.route("/map")
