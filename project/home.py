@@ -1,5 +1,4 @@
 from flask import *
-import game
 app = Flask(__name__)
 
 @app.route("/")
@@ -13,7 +12,7 @@ def home():
 
 @app.route("/play")
 def play():
-    return game.main()
+    render_template("game.html")
 
 
 @app.route("/map")
