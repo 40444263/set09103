@@ -2,8 +2,8 @@ var img = new Image();
 img.src = 'perso.png';
 
 var canvas = document.createElement('canvas');
-canvas.width = screen.width  //a changer
-canvas.height = screen.height//a changer
+canvas.width = document.body.clientWidth  //a changer
+canvas.height = document.body.clientHeight//a changer
 
 document.body.appendChild(canvas);
 var ctx = canvas.getContext("2d");
@@ -49,7 +49,7 @@ function draw_image(){
 }
 
 function jump(){
-  
+
 }
 
 function draw() {
