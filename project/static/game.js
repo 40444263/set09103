@@ -1,17 +1,24 @@
 var img = new Image();
 img.src = 'perso.png';
+img.height = 100
+
 
 var canvas = document.createElement('canvas');
-canvas.width = document.body.clientWidth  //a changer
-canvas.height = document.body.clientHeight//a changer
+canvas.width = document.body.clientWidth
+canvas.height = document.body.clientHeight
 
 document.body.appendChild(canvas);
 var ctx = canvas.getContext("2d");
 var persoX = (canvas.width-img.width)/2;
+var persoY = canvas.height-img.height;
 
 var rightPressed = false;
 var leftPressed = false;
 var upPressed = false;
+
+var saut = false;
+var gravite = 0;
+
 
 
 document.addEventListener("keydown", keyDownHandler, false);
@@ -24,8 +31,7 @@ function keyDownHandler(e) {
     else if(e.keyCode == 37) {
         leftPressed = true;
     }
-    else if(e.keyCode == 38) {
-
+    if(e.keyCode == 38) {
         upPressed = true
     }
 }
@@ -36,7 +42,7 @@ function keyUpHandler(e) {
     else if(e.keyCode == 37) {
         leftPressed = false;
     }
-    else if(e.keyCode == 38) {
+    if(e.keyCode == 38) {
         upPressed = false
   }
 }
@@ -44,12 +50,24 @@ function keyUpHandler(e) {
 
 
 function draw_image(){
-  ctx.clearRect(persoX,canvas.height-img.height,img.width,img.height)
-  ctx.drawImage(img,persoX,canvas.height-img.height)
+
+  ctx.clearRect(persoX,persoY,img.width,img.height);
+  ctx.drawImage(img,persoX,persoY);
 }
 
 function jump(){
-
+  if (saut){
+    ctx.clearRect(persoX,persoY,img.width,img.height)
+    persoY = persoY-(20-gravite)
+    ctx.drawImage(img,persoX,persoY)
+    gravite+=0.65
+    if (persoY > canvas.height-img.height){
+        persoY = canvas.height-img.height;
+        gravite=0
+        saut = false
+      }
+      setTimeout(jump,5)
+    }
 }
 
 function draw() {
@@ -60,10 +78,14 @@ function draw() {
   else if(leftPressed && persoX > 0) {
       persoX -= 7;
   }
-  else if(upPressed){
-    jump() //a faire
+  if(upPressed){
+    if (saut == false){
+      saut = true;
+      jump() //a faire
+      console.log(" DRAW Y",persoY)
+    }
   }
-  console.log(persoX)
+  // console.log(persoX,persoY,img.height)
 }
 
 setInterval(draw, 10);
