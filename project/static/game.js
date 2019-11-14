@@ -77,6 +77,9 @@ function jump(){
         gravite=0
         saut = false
       }
+    else if (perso1Y <) {
+
+    }
     else {
       setTimeout(jump,5);
       }
