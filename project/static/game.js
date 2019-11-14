@@ -9,8 +9,8 @@ canvas.height = document.body.clientHeight
 
 document.body.appendChild(canvas);
 var ctx = canvas.getContext("2d");
-var persoX = (canvas.width-img.width)/2;
-var persoY = canvas.height-(canvas.height*0.3)-img.height;
+var perso1X = (canvas.width-img.width)/2;
+var perso1Y = canvas.height-(canvas.height*0.3)-img.height;
 var x_plat = canvas.width-(canvas.width*0.8)
 var y_plat = canvas.height-(canvas.height*0.3)
 
@@ -54,8 +54,8 @@ function keyUpHandler(e) {
 
 
 function draw_image(){
-  ctx.clearRect(persoX,persoY,img.width,img.height);
-  ctx.drawImage(img,persoX,persoY);
+  ctx.clearRect(perso1X,perso1Y,img.width,img.height);
+  ctx.drawImage(img,perso1X,perso1Y);
 }
 
 function draw_platform(){
@@ -68,12 +68,12 @@ function draw_platform(){
 
 function jump(){
   if (saut){
-    ctx.clearRect(persoX,persoY,img.width,img.height)
-    persoY = persoY-(20-gravite)
-    ctx.drawImage(img,persoX,persoY)
+    ctx.clearRect(perso1X,perso1Y,img.width,img.height)
+    perso1Y = perso1Y-(20-gravite)
+    ctx.drawImage(img,perso1X,perso1Y)
     gravite+=0.65
-    if ((persoY > canvas.height-(canvas.height*0.3)-img.height) && (persoX<canvas.width*0.8) && (persoX>(canvas.width*0.2-(img.width-5)))){
-        persoY = canvas.height-(canvas.height*0.3)-img.height;
+    if ((perso1Y > canvas.height*0.7-100)  && (perso1X<canvas.width*0.8) && (perso1X>(canvas.width*0.2-(img.width-5)))){
+        perso1Y = canvas.height-(canvas.height*0.3)-img.height;
         gravite=0
         saut = false
       }
@@ -85,15 +85,15 @@ function jump(){
 
 function fall(){
   if (is_fall && !saut){
-    ctx.clearRect(persoX,persoY,img.width,img.height)
-    persoY = persoY+gravite
-    ctx.drawImage(img,persoX,persoY)
-    if ((persoX<canvas.width*0.8) && (persoX>(canvas.width*0.2-(img.width-5))) && persoY <canvas.height*0.7) {
+    ctx.clearRect(perso1X,perso1Y,img.width,img.height)
+    perso1Y = perso1Y+gravite
+    ctx.drawImage(img,perso1X,perso1Y)
+    if ((perso1X<canvas.width*0.8) && (perso1X>(canvas.width*0.2-(img.width-5))) && perso1Y <canvas.height*0.7) {
      gravite=0
      is_fall = false
      console.log("fdoe")
    }
-    else if (persoY > canvas.height){
+    else if (perso1Y > canvas.height){
       gravite=0
       is_fall = false
     }
@@ -107,16 +107,16 @@ function fall(){
 function draw() {
   draw_image()
   draw_platform()
-  if(rightPressed && persoX < canvas.width-img.width) {
-      persoX += 7;
-      if (persoX>canvas.width*0.8 && !is_fall){
+  if(rightPressed && perso1X < canvas.width-img.width) {
+      perso1X += 7;
+      if (perso1X>canvas.width*0.8 && !is_fall){
         is_fall = true
         fall()
       }
   }
-  else if(leftPressed && persoX > 0) {
-      persoX -= 7;
-      if (persoX<(canvas.width*0.2-(img.width-5))&& !is_fall){
+  else if(leftPressed && perso1X > 0) {
+      perso1X -= 7;
+      if (perso1X<(canvas.width*0.2-(img.width-5))&& !is_fall){
         is_fall = true
         fall()
       }
@@ -127,10 +127,10 @@ function draw() {
       gravite=0;
       is_fall = false;
       jump()
-      console.log(" DRAW Y",persoY)
+      console.log(" DRAW Y",perso1Y)
     }
   }
-  // console.log(persoX,persoY,img.height)
+  // console.log(perso1X,perso1Y,img.height)
 }
 
 setInterval(draw, 10);
