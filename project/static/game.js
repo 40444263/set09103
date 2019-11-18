@@ -72,14 +72,15 @@ function jump(){
     perso1Y = perso1Y-(20-gravite)
     ctx.drawImage(img,perso1X,perso1Y)
     gravite+=0.65
-    if ((perso1Y > canvas.height*0.7-100)  && (perso1X<canvas.width*0.8) && (perso1X>(canvas.width*0.2-(img.width-5)))){
+    if ((perso1Y > canvas.height*0.7-100) && (perso1Y < canvas.height*0.7-90)  && (perso1X<canvas.width*0.8) && (perso1X>(canvas.width*0.2-(img.width-5)))){
         perso1Y = canvas.height-(canvas.height*0.3)-img.height;
         gravite=0
         saut = false
       }
-    else if (perso1Y <) {
-
-    }
+    else if ((perso1Y-img.height > canvas.height*0.7-10) && (perso1Y-img.height < canvas.height*0.7)  && (perso1X<canvas.width*0.8) && (perso1X>(canvas.width*0.2-(img.width-5)))){
+        gravite=20
+        setTimeout(jump,5);
+      }
     else {
       setTimeout(jump,5);
       }
@@ -94,7 +95,7 @@ function fall(){
     if ((perso1X<canvas.width*0.8) && (perso1X>(canvas.width*0.2-(img.width-5))) && perso1Y <canvas.height*0.7) {
      gravite=0
      is_fall = false
-     console.log("fdoe")
+
    }
     else if (perso1Y > canvas.height){
       gravite=0
@@ -110,16 +111,21 @@ function fall(){
 function draw() {
   draw_image()
   draw_platform()
-  if(rightPressed && perso1X < canvas.width-img.width) {
+  if (rightPressed && perso1X < canvas.width-img.width) {
+    if (!(perso1X+img.width<canvas.width*0.2 && perso1X+img.width>canvas.width*0.2-7 && perso1Y>y_plat-100 && perso1Y-100<y_plat )){
       perso1X += 7;
-      if (perso1X>canvas.width*0.8 && !is_fall){
+      console.log("vfds")
+    }
+    if (perso1X>canvas.width*0.8 && !is_fall){
         is_fall = true
         fall()
       }
   }
   else if(leftPressed && perso1X > 0) {
+    if (!(perso1X>canvas.width*0.8 && perso1X<canvas.width*0.8+10 && perso1Y>y_plat-100 && perso1Y-100<y_plat )){
       perso1X -= 7;
-      if (perso1X<(canvas.width*0.2-(img.width-5))&& !is_fall){
+    }
+    if (perso1X<(canvas.width*0.2-(img.width-5))&& !is_fall){
         is_fall = true
         fall()
       }
@@ -130,7 +136,7 @@ function draw() {
       gravite=0;
       is_fall = false;
       jump()
-      console.log(" DRAW Y",perso1Y)
+      // console.log(" DRAW Y",perso1Y)
     }
   }
   // console.log(perso1X,perso1Y,img.height)
