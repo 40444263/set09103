@@ -1,9 +1,7 @@
 var img1 = new Image();
 img1.src = 'perso2.png';
 img1.height = 100
-img1.onload = function() {
-  context.drawImage(this, 0, 0);
-};
+
 
 var img2 = new Image();
 img2.src = 'perso2.png';
@@ -18,8 +16,15 @@ var canvas = document.createElement('canvas');
 canvas.width = document.body.clientWidth
 canvas.height = document.body.clientHeight
 
+
+
 document.body.appendChild(canvas);
 var ctx = canvas.getContext("2d");
+
+img1.onload = function() {
+  ctx.drawImage(this, 0, 0);
+};
+
 var perso1X = (canvas.width)/3;
 var perso1Y = canvas.height-(canvas.height*0.3)-img1.height;
 
@@ -101,7 +106,7 @@ function keyUpHandler(e) {
 
 function draw_image(){
   ctx.clearRect(perso1X,perso1Y,img1.width,img1.height);
-  ctx.drawImage(img1,perso1X,perso1Y);
+  ctx.onload(img1,perso1X,perso1Y);
 }
 function draw_image2(){
   ctx.clearRect(perso2X,perso2Y,img2.width,img2.height);
