@@ -1,10 +1,17 @@
 var img1 = new Image();
-img1.src = 'perso.png';
+img1.src = 'perso2.png';
 img1.height = 100
+img1.onload = function() {
+  context.drawImage(this, 0, 0);
+};
 
 var img2 = new Image();
 img2.src = 'perso2.png';
 img2.height = 100
+img2.onload = function() {
+  context.drawImage(this, 0, 0);
+};
+
 
 
 var canvas = document.createElement('canvas');
