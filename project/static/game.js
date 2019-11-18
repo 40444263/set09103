@@ -1,7 +1,12 @@
-var img1 = new Image();
-img1.src = 'perso2.png';
-img1.height = 100
+document.body.appendChild(canvas);
+var ctx = canvas.getContext("2d");
 
+var img1 = new Image();
+img1.height = 100
+img1.onload = function() {
+  ctx.drawImage(this, 0, 0);
+};
+img1.src = 'perso2.png';
 
 var img2 = new Image();
 img2.src = 'perso2.png';
@@ -17,13 +22,6 @@ canvas.width = document.body.clientWidth
 canvas.height = document.body.clientHeight
 
 
-
-document.body.appendChild(canvas);
-var ctx = canvas.getContext("2d");
-
-img1.onload = function() {
-  ctx.drawImage(this, 0, 0);
-};
 
 var perso1X = (canvas.width)/3;
 var perso1Y = canvas.height-(canvas.height*0.3)-img1.height;
