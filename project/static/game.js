@@ -6,10 +6,10 @@ img1.height = 100
 img1.onload = function() {
   ctx.drawImage(this, 0, 0);
 };
-img1.src = '{{ url_for('static', filename='game.css') }}';
+img1.src = "{{ url_for('static', filename='game.css') }}"";
 
 var img2 = new Image();
-img2.src = '{{ url_for('static', filename='game.css') }}';
+img2.src = "{{ url_for('static', filename='game.css') }}";
 img2.height = 100
 img2.onload = function() {
   context.drawImage(this, 0, 0);
