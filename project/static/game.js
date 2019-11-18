@@ -266,4 +266,4 @@ function draw() {
     }
 }
 
-setInterval(draw, 10);
+setInterval(draw, 1000);
