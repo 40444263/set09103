@@ -99,7 +99,7 @@ function keyUpHandler(e) {
 
 function draw_image(){
   ctx.clearRect(perso1X,perso1Y,img1.width,img1.height);
-  ctx.onload(img1,perso1X,perso1Y);
+  ctx.drawImage(img1,perso1X,perso1Y);
 }
 function draw_image2(){
   ctx.clearRect(perso2X,perso2Y,img2.width,img2.height);
