@@ -6,10 +6,10 @@ var ctx = canvas.getContext("2d");
 
 var img1 = new Image();
 img1.height = 100
-img1.src = "{{ url_for('static', filename='perso.png') }}";
+img1.src = '/static/perso.png';
 
 var img2 = new Image();
-img2.src = "{{ url_for('static', filename='perso2.png') }}";
+img2.src = '/static/perso2.png'
 img2.height = 100
 
 
