@@ -6,6 +6,7 @@ var ctx = canvas.getContext("2d");
 
 var img1 = new Image();
 img1.height = 100
+img1.width = 75
 img1.src = '/static/perso.png';
 
 var img2 = new Image();
@@ -18,6 +19,8 @@ var height_sword = 50
 
 var perso1X = (canvas.width)/3;
 var perso1Y = canvas.height-(canvas.height*0.3)-img1.height;
+var x_sword1 = perso1X+img1.width
+var y_sword1 = perso1Y-img1.height/2
 
 
 
@@ -269,15 +272,7 @@ function draw() {
       }
     }
 }
-draw_image()
-var x_sword1 = perso1X+img1.width
-var y_sword1 = perso1Y-img1.height/2
-draw_sword1()
 
-draw_image2()
 draw_platform()
-
-
-
 
 setInterval(draw, 10);
