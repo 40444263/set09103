@@ -18,12 +18,6 @@ var height_sword = 50
 
 var perso1X = (canvas.width)/3;
 var perso1Y = canvas.height-(canvas.height*0.3)-img1.height;
-<<<<<<< HEAD
-
-=======
-var x_sword1 = perso1X+img1.width
-var y_sword1 = perso1Y-img1.height/2
->>>>>>> b5f15a9dd29d8acf2255afbff37139c56890201a
 
 
 
