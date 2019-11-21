@@ -119,6 +119,7 @@ function draw_platform(){
 }
 
 function draw_sword1(){
+  ctx.clearRect(x_sword1,y_sword1,50,100);
   ctx.beginPath();
   ctx.fillStyle = "FFFFFF";
   ctx.rect(x_sword1,y_sword1,50,100);
@@ -275,4 +276,4 @@ function draw() {
 
 draw_platform()
 
-setInterval(draw, 10);
+setInterval(draw, 5);
