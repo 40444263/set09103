@@ -116,7 +116,7 @@ function draw_image(position = null,valeur=null){
     }
 
 }
-function draw_image2(){
+function draw_image2(position = null,valeur=null){
   if (position == null){
   ctx.clearRect(perso2X,perso2Y,img2.width,img2.height);
   ctx.drawImage(img2,perso2X,perso2Y);
