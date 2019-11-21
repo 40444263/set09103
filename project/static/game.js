@@ -19,7 +19,7 @@ var height_sword = 50
 var perso1X = (canvas.width)/3;
 var perso1Y = canvas.height-(canvas.height*0.3)-img1.height;
 var x_sword1 = perso1X+img1.width
-var x_sword2 = perso1Y-img1.height/2
+var y_sword1 = perso1Y-img1.height/2
 
 
 
@@ -120,7 +120,7 @@ function draw_platform(){
 function draw_sword1(){
   ctx.beginPath();
   ctx.fillStyle = "FFFFFF";
-  ctx.drawRect(x_sword1,y_sword1,50,100);
+  ctx.rect(x_sword1,y_sword1,50,100);
   ctx.stroke();
 }
 
