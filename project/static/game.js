@@ -129,8 +129,7 @@ function jump(){
   if (saut){
     ctx.clearRect(perso1X,perso1Y,img1.width,img1.height)
     perso1Y = perso1Y-(20-gravite)
-    y_sword1 = y_sword1+gravite
-    ctx.drawImage(img1,perso1X,perso1Y)
+    y_sword1 = y_sword1-(20-gravite)
     gravite+=0.65
     if ((perso1Y > canvas.height*0.7-100) && (perso1Y < canvas.height*0.7-80)  && (perso1X<canvas.width*0.8) && (perso1X>(canvas.width*0.2-(img1.width-5)))){
         perso1Y = canvas.height-(canvas.height*0.3)-img1.height;
@@ -151,7 +150,6 @@ function jump2(){
   if (saut2){
     ctx.clearRect(perso2X,perso2Y,img2.width,img2.height)
     perso2Y = perso2Y-(20-gravite2)
-    ctx.drawImage(img2,perso2X,perso2Y)
     gravite2+=0.65
     if ((perso2Y > canvas.height*0.7-100) && (perso2Y < canvas.height*0.7-80)  && (perso2X<canvas.width*0.8) && (perso2X>(canvas.width*0.2-(img2.width-5)))){
         perso2Y = canvas.height-(canvas.height*0.3)-img2.height;
@@ -173,7 +171,6 @@ function fall1(){
     ctx.clearRect(perso1X,perso1Y,img1.width,img1.height)
     perso1Y = perso1Y+gravite
     y_sword1 = y_sword1+gravite
-    ctx.drawImage(img1,perso1X,perso1Y)
     if ((perso1X<canvas.width*0.8) && (perso1X>(canvas.width*0.2-(img1.width-5))) && perso1Y <canvas.height*0.7) {
      gravite=0
      is_fall1 = false
@@ -194,7 +191,6 @@ function fall2(){
   if (is_fall2 && !saut2){
     ctx.clearRect(perso2X,perso2Y,img2.width,img2.height)
     perso2Y = perso2Y+gravite2
-    ctx.drawImage(img2,perso2X,perso2Y)
     if ((perso2X<canvas.width*0.8) && (perso2X>(canvas.width*0.2-(img2.width-5))) && perso2Y <canvas.height*0.7) {
      gravite2=0
      is_fall2 = false
