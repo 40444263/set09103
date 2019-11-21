@@ -13,13 +13,16 @@ img2.src = '/static/perso2.png'
 img2.height = 100
 
 
-
-
-
+var height_sword = 50
 
 
 var perso1X = (canvas.width)/3;
 var perso1Y = canvas.height-(canvas.height*0.3)-img1.height;
+var x_sword1 = perso1X+img1.width
+var x_sword2 = perso1Y-img1.height/2
+
+
+
 
 var perso2X = ((canvas.width)/3)*2;
 var perso2Y = canvas.height-(canvas.height*0.3)-img1.height;
@@ -114,6 +117,13 @@ function draw_platform(){
   ctx.stroke();
 }
 
+function draw_sword1(){
+  ctx.beginPath();
+  ctx.fillStyle = "FFFFFF";
+  ctx.drawRect(x_sword1,y_sword1,50,100);
+  ctx.stroke();
+}
+
 function jump(){
   if (saut){
     ctx.clearRect(perso1X,perso1Y,img1.width,img1.height)
@@ -200,6 +210,7 @@ function fall2(){
 
 function draw() {
   draw_image()
+  draw_sword1()
   draw_image2()
   draw_platform()
 
