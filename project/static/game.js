@@ -6,7 +6,7 @@ var ctx = canvas.getContext("2d");
 
 var img1 = new Image();
 img1.height = 100
-img1.width = 75
+img1.width = 100
 img1.src = '/static/perso.png';
 
 var img2 = new Image();
@@ -129,6 +129,7 @@ function jump(){
   if (saut){
     ctx.clearRect(perso1X,perso1Y,img1.width,img1.height)
     perso1Y = perso1Y-(20-gravite)
+    y_sword1 = y_sword1+gravite
     ctx.drawImage(img1,perso1X,perso1Y)
     gravite+=0.65
     if ((perso1Y > canvas.height*0.7-100) && (perso1Y < canvas.height*0.7-80)  && (perso1X<canvas.width*0.8) && (perso1X>(canvas.width*0.2-(img1.width-5)))){
@@ -171,6 +172,7 @@ function fall1(){
   if (is_fall1 && !saut){
     ctx.clearRect(perso1X,perso1Y,img1.width,img1.height)
     perso1Y = perso1Y+gravite
+    y_sword1 = y_sword1+gravite
     ctx.drawImage(img1,perso1X,perso1Y)
     if ((perso1X<canvas.width*0.8) && (perso1X>(canvas.width*0.2-(img1.width-5))) && perso1Y <canvas.height*0.7) {
      gravite=0
@@ -219,6 +221,7 @@ function draw() {
   if (rightPressed1 && perso1X < canvas.width-img1.width) {
     if (!(perso1X+img1.width<canvas.width*0.2 && perso1X+img1.width>canvas.width*0.2-7 && perso1Y>y_plat-100 && perso1Y-100<y_plat )){
       perso1X += 7;
+      x_sword1 += 7;
     }
     if (perso1X>canvas.width*0.8 && !is_fall1){
         is_fall1 = true
@@ -228,6 +231,7 @@ function draw() {
   else if(leftPressed1 && perso1X > 0) {
     if (!(perso1X>canvas.width*0.8 && perso1X<canvas.width*0.8+10 && perso1Y>y_plat-100 && perso1Y-100<y_plat )){
       perso1X -= 7;
+      x_sword1 -= 7;
     }
     if (perso1X<(canvas.width*0.2-(img1.width-5))&& !is_fall1){
         is_fall1 = true
