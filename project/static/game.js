@@ -128,12 +128,13 @@ function draw_sword1(){
 
 function jump(){
   if (saut){
-    ctx.clearRect(perso1X,perso1Y,img1.width,img1.height)
+    // ctx.clearRect(perso1X,perso1Y,img1.width,img1.height)
     perso1Y = perso1Y-(20-gravite)
     y_sword1 = y_sword1-(20-gravite)
     gravite+=0.65
     if ((perso1Y > canvas.height*0.7-100) && (perso1Y < canvas.height*0.7-80)  && (perso1X<canvas.width*0.8) && (perso1X>(canvas.width*0.2-(img1.width-5)))){
         perso1Y = canvas.height-(canvas.height*0.3)-img1.height;
+        y_sword1 = perso1Y-img1.height/2
         gravite=0
         saut = false
       }
@@ -149,7 +150,7 @@ function jump(){
 
 function jump2(){
   if (saut2){
-    ctx.clearRect(perso2X,perso2Y,img2.width,img2.height)
+    // ctx.clearRect(perso2X,perso2Y,img2.width,img2.height)
     perso2Y = perso2Y-(20-gravite2)
     gravite2+=0.65
     if ((perso2Y > canvas.height*0.7-100) && (perso2Y < canvas.height*0.7-80)  && (perso2X<canvas.width*0.8) && (perso2X>(canvas.width*0.2-(img2.width-5)))){
