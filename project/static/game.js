@@ -150,7 +150,7 @@ function jump(){
 
 function jump2(){
   if (saut2){
-    // ctx.clearRect(perso2X,perso2Y,img2.width,img2.height)
+    ctx.clearRect(perso2X,perso2Y,img2.width,img2.height)
     perso2Y = perso2Y-(20-gravite2)
     gravite2+=0.65
     if ((perso2Y > canvas.height*0.7-100) && (perso2Y < canvas.height*0.7-80)  && (perso2X<canvas.width*0.8) && (perso2X>(canvas.width*0.2-(img2.width-5)))){
@@ -210,16 +210,18 @@ function fall2(){
 }
 
 function draw() {
-  draw_image()
-  draw_sword1()
-  draw_image2()
+  // draw_image()
+  // draw_sword1()
+  // draw_image2()
 
 
 
   if (rightPressed1 && perso1X < canvas.width-img1.width) {
     if (!(perso1X+img1.width<canvas.width*0.2 && perso1X+img1.width>canvas.width*0.2-7 && perso1Y>y_plat-100 && perso1Y-100<y_plat )){
+      ctx.clearRect(perso2X,perso2Y,img2.width,img2.height);
       perso1X += 7;
       x_sword1 += 7;
+
     }
     if (perso1X>canvas.width*0.8 && !is_fall1){
         is_fall1 = true
@@ -248,7 +250,9 @@ function draw() {
 
   if (rightPressed2 && perso2X < canvas.width-img2.width) {
     if (!(perso2X+img2.width<canvas.width*0.2 && perso2X+img2.width>canvas.width*0.2-7 && perso2Y>y_plat-100 && perso2Y-100<y_plat )){
+      ctx.clearRect(perso2X,perso2Y,img2.width,img2.height);
       perso2X += 7;
+      ctx.drawImage(img2,perso2X,perso2Y);
     }
     if (perso2X>canvas.width*0.8 && !is_fall2){
         is_fall2 = true
@@ -257,7 +261,9 @@ function draw() {
   }
   else if(leftPressed2 && perso2X > 0) {
     if (!(perso2X>canvas.width*0.8 && perso2X<canvas.width*0.8+10 && perso2Y>y_plat-100 && perso2Y-100<y_plat )){
+      ctx.clearRect(perso2X,perso2Y,img2.width,img2.height);
       perso2X -= 7;
+      ctx.drawImage(img2,perso2X,perso2Y);
     }
     if (perso2X<(canvas.width*0.2-(img2.width-5))&& !is_fall2){
         is_fall2 = true
@@ -274,7 +280,9 @@ function draw() {
       }
     }
 }
-
+draw_image()
+draw_sword1()
+draw_image2()
 draw_platform()
 
 setInterval(draw, 5);
