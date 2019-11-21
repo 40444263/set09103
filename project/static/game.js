@@ -218,9 +218,10 @@ function draw() {
 
   if (rightPressed1 && perso1X < canvas.width-img1.width) {
     if (!(perso1X+img1.width<canvas.width*0.2 && perso1X+img1.width>canvas.width*0.2-7 && perso1Y>y_plat-100 && perso1Y-100<y_plat )){
-      ctx.clearRect(perso2X,perso2Y,img2.width,img2.height);
+      ctx.clearRect(perso1X,perso1Y,img1.width,img1.height);
       perso1X += 7;
       x_sword1 += 7;
+      ctx.drawImage(img1,perso1X,perso1Y);
 
     }
     if (perso1X>canvas.width*0.8 && !is_fall1){
@@ -230,8 +231,10 @@ function draw() {
   }
   else if(leftPressed1 && perso1X > 0) {
     if (!(perso1X>canvas.width*0.8 && perso1X<canvas.width*0.8+10 && perso1Y>y_plat-100 && perso1Y-100<y_plat )){
+      ctx.clearRect(perso1X,perso1Y,img1.width,img1.height);
       perso1X -= 7;
       x_sword1 -= 7;
+      ctx.drawImage(img1,perso1X,perso1Y);
     }
     if (perso1X<(canvas.width*0.2-(img1.width-5))&& !is_fall1){
         is_fall1 = true
