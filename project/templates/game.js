@@ -7,26 +7,33 @@ var ctx = canvas.getContext("2d");
 var img1 = new Image();
 img1.height = 100
 img1.width = 100
-img1.src = '/static/perso.png';
+// img1.src = '/static/perso.png';
+img1.src = 'perso.png';
 
 var img2 = new Image();
-img2.src = '/static/perso2.png'
+// img2.src = '/static/perso2.png'
+ img2.src = 'perso2.png'
+
 img2.height = 100
+img2.width = 100
 
 
-var height_sword = 50
+var height_sword = 100
+var weight_sword = 50
 
 
 var perso1X = (canvas.width)/3;
 var perso1Y = canvas.height-(canvas.height*0.3)-img1.height;
 var x_sword1 = perso1X+img1.width
-var y_sword1 = perso1Y-img1.height/2
+var y_sword1 = perso1Y+(img1.height/2)
 
 
 
 
 var perso2X = ((canvas.width)/3)*2;
 var perso2Y = canvas.height-(canvas.height*0.3)-img1.height;
+var x_sword2 = perso2X
+var y_sword2 = perso2Y+(img2.height/2)
 
 
 var x_plat = canvas.width-(canvas.width*0.8)
@@ -36,18 +43,22 @@ var y_plat = canvas.height-(canvas.height*0.3)
 var rightPressed1 = false;
 var leftPressed1 = false;
 var upPressed1 = false;
+var hitPressed1 = false
 
 var rightPressed2 = false;
 var leftPressed2 = false;
 var upPressed2 = false;
+var hitPressed2 = false
 
 var saut = false;
 var is_fall1 = false;
+var hit1 = false;
 var gravite = 0;
 
 var saut2 = false;
 var is_fall2 = false;
 var gravite2 = 0;
+var hit2 = false;
 
 
 
@@ -65,6 +76,9 @@ function keyDownHandler(e) {
     if(e.keyCode == 38) {
         upPressed1 = true
     }
+    if(e.keyCode == 32){
+        hitPressed1 = true
+    }
 // perso2
     if(e.keyCode == 68) {
         rightPressed2 = true;
@@ -74,6 +88,9 @@ function keyDownHandler(e) {
     }
     if(e.keyCode == 87) {
         upPressed2 = true
+    }
+    if(e.keyCode == 96){
+        hitPressed2 = true
     }
 }
 function keyUpHandler(e) {
@@ -86,6 +103,9 @@ function keyUpHandler(e) {
     if(e.keyCode == 38) {
         upPressed1 = false
     }
+    if(e.keyCode == 32){
+      hitPressed1 = false
+    }
 
   // perso2
       if(e.keyCode == 68) {
@@ -97,6 +117,9 @@ function keyUpHandler(e) {
       if(e.keyCode == 87) {
           upPressed2 = false
       }
+      if(e.keyCode == 96){
+        hitPressed2 = false
+      }
 }
 
 
@@ -106,11 +129,11 @@ function draw_image(position = null,valeur=null){
     ctx.clearRect(perso1X,perso1Y,img1.width,img1.height);
     ctx.drawImage(img1,perso1X,perso1Y);
   }
-  else if (position = "x") {
+  else if (position == "x") {
     ctx.clearRect(perso1X+valeur,perso1Y,img1.width,img1.height);
     ctx.drawImage(img1,perso1X,perso1Y);
 
-  }  else if (position = "y") {
+  }  else if (position == "y") {
       ctx.clearRect(perso1X,perso1Y+valeur,img1.width,img1.height);
       ctx.drawImage(img1,perso1X,perso1Y);
     }
@@ -121,10 +144,10 @@ function draw_image2(position = null,valeur=null){
   ctx.clearRect(perso2X,perso2Y,img2.width,img2.height);
   ctx.drawImage(img2,perso2X,perso2Y);
   }
-  else if (position = "x") {
+  else if (position == "x") {
     ctx.clearRect(perso2X+valeur,perso2Y,img2.width,img2.height);
     ctx.drawImage(img2,perso2X,perso2Y);
-  }  else if (position = "y") {
+  }  else if (position == "y") {
     ctx.clearRect(perso2X,perso2Y+valeur,img2.width,img2.height);
     ctx.drawImage(img2,perso2X,perso2Y);
   }
@@ -139,10 +162,26 @@ function draw_platform(){
 }
 
 function draw_sword1(){
-  ctx.clearRect(x_sword1,y_sword1,50,100);
   ctx.beginPath();
   ctx.fillStyle = "FFFFFF";
-  ctx.rect(x_sword1,y_sword1,50,100);
+  ctx.rect(0,0,50,-100);
+  // ctx.lineTo(0,-height_sword);
+  // ctx.lineTo(weight_sword,-height_sword)
+  // ctx.lineTo(weight_sword,0)
+  // ctx.lineTo(0,0)
+  ctx.stroke();
+}
+
+function draw_sword2(){
+
+  ctx.clearRect(0,0,50,100);
+  ctx.beginPath();
+  ctx.fillStyle = "FFFFFF";
+  ctx.rect(0,0,50,-100);
+  // ctx.lineTo(0,-height_sword);
+  // ctx.lineTo(-weight_sword,-height_sword)
+  // ctx.lineTo(-weight_sword,0)
+  // ctx.lineTo(0,0)
   ctx.stroke();
 }
 
@@ -155,7 +194,7 @@ function jump(){
     gravite+=0.65
     if ((perso1Y > canvas.height*0.7-100) && (perso1Y < canvas.height*0.7-80)  && (perso1X<canvas.width*0.8) && (perso1X>(canvas.width*0.2-(img1.width-5)))){
         perso1Y = canvas.height-(canvas.height*0.3)-img1.height;
-        y_sword1 = perso1Y-img1.height/2
+        y_sword1 = perso1Y+(img1.height/2)
         gravite=0
         saut = false
       }
@@ -172,10 +211,12 @@ function jump(){
 function jump2(){
   if (saut2){
     perso2Y = perso2Y-(20-gravite2)
+    y_sword2 = y_sword2-(20-gravite2)
+    draw_image2("y",(20-gravite2))
     gravite2+=0.65
-    draw_image2("y",(20-gravite))
     if ((perso2Y > canvas.height*0.7-100) && (perso2Y < canvas.height*0.7-80)  && (perso2X<canvas.width*0.8) && (perso2X>(canvas.width*0.2-(img2.width-5)))){
         perso2Y = canvas.height-(canvas.height*0.3)-img2.height;
+        y_sword2 = perso2Y+(img2.height/2)
         gravite2=0
         saut2 = false
       }
@@ -230,9 +271,90 @@ function fall2(){
   }
 }
 
+
+function fct_hit1() {
+  // draw_sword1()
+
+  if (aller) {
+    if (hit1 == true && rotate < 90){
+        ctx.save();
+        ctx.translate(x_sword1,y_sword1)
+        ctx.rotate((rotate-5) * (Math.PI / 180));
+        ctx.clearRect(0,0,52,-102)
+        ctx.stroke();
+        ctx.restore();
+
+        ctx.save();
+        ctx.translate(x_sword1,y_sword1)
+        ctx.rotate(rotate * (Math.PI / 180));
+        draw_sword1()
+        ctx.stroke();
+        ctx.restore();
+        rotate+=5
+      }else{
+        aller = false
+      }
+      setTimeout(fct_hit1,100);
+  }else {
+    if (hit1 == true && rotate > 0){
+      ctx.save();
+      ctx.translate(x_sword1,y_sword1)
+      ctx.rotate((rotate+5) * (Math.PI / 180));
+      ctx.clearRect(0,0,50,-100)
+      ctx.stroke();
+      ctx.restore();
+
+      ctx.save();
+      ctx.translate(x_sword1,y_sword1)
+      ctx.rotate(rotate * (Math.PI / 180));
+      draw_sword1()
+      ctx.stroke();
+      ctx.restore();
+      rotate-=5
+      setTimeout(fct_hit1,100);
+    }else {
+      hit1 = false
+      rotate = 0
+    }
+  }
+}
+
+function fct_hit2() {
+  // draw_sword1()
+
+  if (aller2) {
+    if (hit2 == true && rotate2 < 90){
+        ctx.save();
+        ctx.translate(x_sword2,y_sword2)
+        ctx.rotate(-rotate2 * (Math.PI / 180));
+        draw_sword2()
+        ctx.stroke();
+        ctx.restore();
+        rotate2+=5
+      }else{
+        aller2 = false
+      }
+      setTimeout(fct_hit2,10);
+  }else {
+    if (hit2 == true && rotate2 > 0){
+      ctx.save();
+      ctx.translate(x_sword2,y_sword2)
+      ctx.rotate(-rotate2 * (Math.PI / 180));
+      draw_sword2()
+      ctx.stroke();
+      ctx.restore();
+      rotate2-=5
+      setTimeout(fct_hit2,10);
+    }else {
+      hit2 = false
+      rotate2 = 0
+    }
+  }
+}
+
 function draw() {
   draw_image()
-  draw_sword1()
+  // draw_sword1()
   draw_image2()
 
 
@@ -250,7 +372,7 @@ function draw() {
   }
   else if(leftPressed1 && perso1X > 0) {
     if (!(perso1X>canvas.width*0.8 && perso1X<canvas.width*0.8+10 && perso1Y>y_plat-100 && perso1Y-100<y_plat )){
-      ctx.clearRect(perso1X,perso1Y,img1.width,img1.height);
+      // ctx.clearRect(perso1X,perso1Y,img1.width,img1.height);
       perso1X -= 7;
       x_sword1 -= 7;
       draw_image("x",7)
@@ -270,9 +392,20 @@ function draw() {
     }
   }
 
+  if (hitPressed1){
+    if (hit1 == false){
+      hit1 = true
+      aller = true
+      rotate = 0
+      fct_hit1()
+    }
+  }
+
+
   if (rightPressed2 && perso2X < canvas.width-img2.width) {
     if (!(perso2X+img2.width<canvas.width*0.2 && perso2X+img2.width>canvas.width*0.2-7 && perso2Y>y_plat-100 && perso2Y-100<y_plat )){
       perso2X += 7;
+      x_sword2 += 7;
       draw_image2("x",-7)
     }
     if (perso2X>canvas.width*0.8 && !is_fall2){
@@ -282,8 +415,9 @@ function draw() {
   }
   else if(leftPressed2 && perso2X > 0) {
     if (!(perso2X>canvas.width*0.8 && perso2X<canvas.width*0.8+10 && perso2Y>y_plat-100 && perso2Y-100<y_plat )){
-      ctx.clearRect(perso2X,perso2Y,img2.width,img2.height);
+      // ctx.clearRect(perso2X,perso2Y,img2.width,img2.height);
       perso2X -= 7;
+      x_sword2 -= 7;
       draw_image2("x",7)
     }
     if (perso2X<(canvas.width*0.2-(img2.width-5))&& !is_fall2){
@@ -300,6 +434,19 @@ function draw() {
       // console.log(" DRAW Y",perso1Y)
       }
     }
+  if (hitPressed2){
+    if (hit2 == false){
+      hit2 = true
+      aller2 = true
+      rotate2 = 0
+      fct_hit2()
+    }
+  }
+}
+
+
+function collision() {
+  //a faire
 }
 
 draw_platform()
