@@ -27,7 +27,7 @@ function getTrValues(idTr){
 function changeMap(){
   var link = "home?id="
   var id = tr_select.toString()
-  link = str.concat(link,id)
+  link = link.concat(id)
   window.location.href=link
   console.log(link)
 }
