@@ -21,7 +21,7 @@
           <tr id={{t.id}}  onclick="getTrValues(this.id)">
             <td>{{ t.name }}</td>
             <td>{{ t.nbuse }}</td>
-            <td><img width="100px" height="100px" src="{{ t.path }}" alt="image"></td>            
+            <td><img width="100px" height="100px" src="{{ t.path }}" alt="image"></td>
           </tr>
           {% endfor %}
           <script type="text/javascript">
@@ -31,9 +31,7 @@
             var cellcount = cells.length;
             for( c=0; c<cellcount; c++) {
               cell = cells[c];
-              // ici tu en fais ce que tu veux.
-              // par exemple : affichage dans la console du navigateur
-              console.log("Cellule N° "+c + " = " + cell.innerHTML);
+              cell.style.background = "#2C75FF"
             }
            }
           </script>
