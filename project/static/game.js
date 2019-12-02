@@ -265,7 +265,7 @@ function fall1(){
       is_fall1 = false
       life_perso1 -=1
       if (life_perso1 == 0){
-        window.location.replace("file:///home/greg/github/set09103/project/templates/home.html");
+        // window.location.replace("file:///home/greg/github/set09103/project/templates/home.html");
       }else{
         perso1X = (canvas.width)/3;
         perso1Y = canvas.height-(canvas.height*0.3)-img1.height;
