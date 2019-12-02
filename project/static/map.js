@@ -23,3 +23,8 @@ function getTrValues(idTr){
    }
  }
 }
+
+function changeMap(){
+
+  window.location.href="'{{ url_for( 'home?50')}}'"
+}
