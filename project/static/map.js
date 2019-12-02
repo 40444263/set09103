@@ -25,6 +25,5 @@ function getTrValues(idTr){
 }
 
 function changeMap(){
-
-  window.location.href="'{{ url_for( 'home?50')}}'"
+  window.location.href="home?50"
 }
