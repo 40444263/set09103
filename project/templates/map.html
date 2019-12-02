@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Map</title>
+    <link rel="stylesheet" href="map.css">
+  </head>
+  <body>
+    <div class="play">
+      <header>
+        <p>Map choose</p>
+      </header>
+      <div class="list">
+        <table>
+          <tr>
+            {% for t in table %}
+            <td>{{ t.name }}</td>
+            <td>{{ t.nbuse }}</td>
+            <td>{{ t.path }}</td>
+            {% endfor %}
+          </tr>
+        </table>
+
+      </div>
+    </div>
+
+    <footer>
+      <div class="div_button1">
+        <a href=".." target="_blank" > <button class="button1" type="button" name="choose">Choose</button> </a>
+      </div>
+      <div class="div_button2">
+        <a href=".." target="_blank" ><button class="button2" type="button" name="return">Return</button></a>
+      </div>
+    </footer>
+  </body>
+</html>

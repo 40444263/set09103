@@ -60,6 +60,9 @@ var is_fall2 = false;
 var gravite2 = 0;
 var hit2 = false;
 
+var life_perso1 = 3
+var life_perso2 = 3
+
 
 
 document.addEventListener("keydown", keyDownHandler, false);
@@ -165,24 +168,41 @@ function draw_sword1(){
   ctx.beginPath();
   ctx.fillStyle = "FFFFFF";
   ctx.rect(0,0,50,-100);
-  // ctx.lineTo(0,-height_sword);
-  // ctx.lineTo(weight_sword,-height_sword)
-  // ctx.lineTo(weight_sword,0)
-  // ctx.lineTo(0,0)
   ctx.stroke();
+  if (perso2X < perso1X+img1.width+100 && perso2X > perso1X+img1.width){
+    perso2X = perso2X+15
+    x_sword2= x_sword2+15
+    console.log("bite")
+    if (perso2X>canvas.width*0.8 && !is_fall2){
+        is_fall2 = true
+        fall2()
+      }
+    return true
+  }else{
+    return false
+  }
+
 }
 
 function draw_sword2(){
 
-  ctx.clearRect(0,0,50,100);
+  // ctx.clearRect(0,0,50,100);
   ctx.beginPath();
   ctx.fillStyle = "FFFFFF";
-  ctx.rect(0,0,50,-100);
-  // ctx.lineTo(0,-height_sword);
-  // ctx.lineTo(-weight_sword,-height_sword)
-  // ctx.lineTo(-weight_sword,0)
-  // ctx.lineTo(0,0)
+  ctx.rect(0,0,-50,-100);
   ctx.stroke();
+  if (perso1X+img1.width > perso2X-100 && perso1X+img1.width < perso2X){
+    perso1X = perso1X-15
+    x_sword1= x_sword1-15
+    console.log("bite")
+    if (perso1X<(canvas.width*0.2-(img1.width-5))&& !is_fall1){
+        is_fall1 = true
+        fall1()
+      }
+    return true
+  }else{
+    return false
+  }
 }
 
 function jump(){
@@ -243,6 +263,14 @@ function fall1(){
     else if (perso1Y > canvas.height){
       gravite=0
       is_fall1 = false
+      life_perso1 -=1
+      if (life_perso1 == 0){
+        window.location.replace("file:///home/greg/github/set09103/project/templates/home.html");
+      }else{
+        perso1X = (canvas.width)/3;
+        perso1Y = canvas.height-(canvas.height*0.3)-img1.height;
+        draw_image()
+      }
     }
     else{
       gravite+=0.3
@@ -263,6 +291,15 @@ function fall2(){
     else if (perso2Y > canvas.height){
       gravite2=0
       is_fall2 = false
+      life_perso2 -=1
+      if (life_perso2 == 0){
+        window.location.replace("file:///home/greg/github/set09103/project/templates/home.html");
+      }else {
+
+        perso2X = ((canvas.width)/3)*2;
+        perso2Y = canvas.height-(canvas.height*0.3)-img1.height;
+        draw_image2()
+      }
     }
     else{
       gravite2+=0.3
@@ -277,32 +314,23 @@ function fct_hit1() {
 
   if (aller) {
     if (hit1 == true && rotate < 90){
-        ctx.save();
-        ctx.translate(x_sword1,y_sword1)
-        ctx.rotate((rotate-5) * (Math.PI / 180));
-        ctx.clearRect(0,0,52,-102)
-        ctx.stroke();
-        ctx.restore();
 
         ctx.save();
         ctx.translate(x_sword1,y_sword1)
         ctx.rotate(rotate * (Math.PI / 180));
-        draw_sword1()
+        var touche = draw_sword1()
         ctx.stroke();
         ctx.restore();
         rotate+=5
+        if (touche){
+          draw_image2()
+        }
       }else{
         aller = false
       }
-      setTimeout(fct_hit1,100);
+      setTimeout(fct_hit1,10);
   }else {
     if (hit1 == true && rotate > 0){
-      ctx.save();
-      ctx.translate(x_sword1,y_sword1)
-      ctx.rotate((rotate+5) * (Math.PI / 180));
-      ctx.clearRect(0,0,50,-100)
-      ctx.stroke();
-      ctx.restore();
 
       ctx.save();
       ctx.translate(x_sword1,y_sword1)
@@ -311,7 +339,7 @@ function fct_hit1() {
       ctx.stroke();
       ctx.restore();
       rotate-=5
-      setTimeout(fct_hit1,100);
+      setTimeout(fct_hit1,10);
     }else {
       hit1 = false
       rotate = 0
@@ -327,9 +355,12 @@ function fct_hit2() {
         ctx.save();
         ctx.translate(x_sword2,y_sword2)
         ctx.rotate(-rotate2 * (Math.PI / 180));
-        draw_sword2()
+        var toucher = draw_sword2()
         ctx.stroke();
         ctx.restore();
+        if (toucher){
+          draw_image()
+        }
         rotate2+=5
       }else{
         aller2 = false
@@ -359,11 +390,15 @@ function draw() {
 
 
   if (rightPressed1 && perso1X < canvas.width-img1.width) {
-    if (!(perso1X+img1.width<canvas.width*0.2 && perso1X+img1.width>canvas.width*0.2-7 && perso1Y>y_plat-100 && perso1Y-100<y_plat )){;
+    if (!(perso1X+img1.width<canvas.width*0.2 && perso1X+img1.width>canvas.width*0.2-7 && perso1Y>y_plat-100 && perso1Y-100<y_plat )){
       perso1X += 7;
       x_sword1 += 7;
-      draw_image("x",-7)
-
+      if (perso1X+img1.width > perso2X && perso1X < perso2X+img2.width && perso1Y+img1.height >= perso2Y && perso1Y+img1.height <= perso2Y+img2.height){
+        perso1X -= 7;
+        x_sword1 -= 7;
+      }else{
+        draw_image("x",-7)
+      }
     }
     if (perso1X>canvas.width*0.8 && !is_fall1){
         is_fall1 = true
@@ -375,7 +410,12 @@ function draw() {
       // ctx.clearRect(perso1X,perso1Y,img1.width,img1.height);
       perso1X -= 7;
       x_sword1 -= 7;
-      draw_image("x",7)
+      if (perso1X > perso2X && perso1X < perso2X+img2.width && perso1Y+img1.height >= perso2Y && perso1Y+img1.height <= perso2Y+img2.height){
+        perso1X += 7;
+        x_sword1 += 7;
+      }else{
+        draw_image("x",7)
+      }
     }
     if (perso1X<(canvas.width*0.2-(img1.width-5))&& !is_fall1){
         is_fall1 = true
@@ -406,7 +446,13 @@ function draw() {
     if (!(perso2X+img2.width<canvas.width*0.2 && perso2X+img2.width>canvas.width*0.2-7 && perso2Y>y_plat-100 && perso2Y-100<y_plat )){
       perso2X += 7;
       x_sword2 += 7;
-      draw_image2("x",-7)
+      if (perso2X+img2.width > perso1X && perso2X < perso1X+img1.width && perso2Y+img2.height >= perso1Y && perso2Y+img2.height <= perso1Y+img1.height){
+        perso2X -= 7;
+        x_sword2 -= 7;
+      }else{
+        draw_image2("x",-7)
+      }
+
     }
     if (perso2X>canvas.width*0.8 && !is_fall2){
         is_fall2 = true
@@ -418,7 +464,12 @@ function draw() {
       // ctx.clearRect(perso2X,perso2Y,img2.width,img2.height);
       perso2X -= 7;
       x_sword2 -= 7;
-      draw_image2("x",7)
+      if (perso2X > perso1X && perso2X < perso1X+img1.width && perso2Y+img1.height >= perso1Y && perso2Y+img2.height <= perso1Y+img1.height){
+        perso2X += 7;
+        x_sword2 += 7;
+      }else{
+        draw_image2("x",7)
+      }
     }
     if (perso2X<(canvas.width*0.2-(img2.width-5))&& !is_fall2){
         is_fall2 = true
@@ -445,9 +496,6 @@ function draw() {
 }
 
 
-function collision() {
-  //a faire
-}
 
 draw_platform()
 

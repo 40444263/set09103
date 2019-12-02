@@ -1,4 +1,6 @@
 from flask import *
+import sqlite3
+from sqlite3 import *
 app = Flask(__name__)
 
 @app.route("/")
@@ -17,7 +19,19 @@ def play():
 
 @app.route("/map")
 def map():
-    return "Map a faire"
+    connexion = sqlite3.connect("game.db")
+    curseur = connexion.cursor()
+    data = curseur.execute("SELECT * from Map;")
+    table = []
+    for row in data:
+        ligne = {
+                'name': row[1],
+                'nbuse':row[3],
+                'path':row[2]
+            }
+        table.append(ligne)
+
+    return render_template("map.html",table=table)
 
 @app.route("/commands")
 def commands():
