@@ -12,9 +12,9 @@
       </header>
       <div class="list">
         <table style="width:100%">
-          <tr>
+          <tr onclick="getTrValues(this.id)">
             <th>Name</th>
-            <th>umber of use</th>
+            <th>number of use</th>
             <th>Image</th>
           </tr>
           <tr>
@@ -24,6 +24,19 @@
             <td><img width="100px" height="100px" src="{{ t.path }}" alt="image"></td>
             {% endfor %}
           </tr>
+          <script type="text/javascript">
+           function getTrValues(idTr){
+            var tr = document.getElementById(idTr);
+            var cells =  tr.cells
+            var cellcount = cells.length;
+            for( c=0; c<cellcount; c++) {
+              cell = cells[c];
+              // ici tu en fais ce que tu veux.
+              // par exemple : affichage dans la console du navigateur
+              console.log("Cellule N° "+c + " = " + cell.innerHTML);
+            }
+           }
+          </script>
         </table>
 
       </div>
