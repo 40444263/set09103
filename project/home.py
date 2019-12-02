@@ -10,20 +10,18 @@ def root():
 
 @app.route("/home")
 def home():
+    id = request.args.get('id','')
+    print("fdoifko",id)
+    if (id != ""):
+        data = curseur.execute("SELECT Path from Map where id =" + id +";")
+        print(data[0])
+        shutil.copy(data[0],"static/background.jpg")
     return render_template("home.html")
 
 
 @app.route("/play")
 def play():
-    id = request.args.get('id','')
-    print("fdoifko",id)
-    if (id == ""):
-        return render_template("game.html")
-    else:
-        data = curseur.execute("SELECT Path from Map where id =" + id +";")
-        print(data[0])
-        shutil.copy(data[0],"static/background.jpg")
-        return render_template("game.html")
+    return render_template("game.html")
 
 
 @app.route("/map")
