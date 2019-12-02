@@ -5,21 +5,21 @@ document.body.appendChild(canvas);
 var ctx = canvas.getContext("2d");
 
 var img1 = new Image();
-img1.height = 100
-img1.width = 100
+img1.height = 100;
+img1.width = 100;
 img1.src = '/static/perso.png';
 // img1.src = 'perso.png';
 
 var img2 = new Image();
-img2.src = '/static/perso2.png'
+img2.src = '/static/perso2.png';
  // img2.src = 'perso2.png'
 
-img2.height = 100
-img2.width = 100
+img2.height = 100;
+img2.width = 100;
 
 
-var height_sword = 100
-var weight_sword = 50
+var height_sword = 100;
+var weight_sword = 50;
 
 
 var perso1X = (canvas.width)/3;
@@ -265,7 +265,7 @@ function fall1(){
       is_fall1 = false
       life_perso1 -=1
       if (life_perso1 == 0){
-        // window.location.replace("file:///home/greg/github/set09103/project/templates/home.html");
+        window.location.href("home");
       }else{
         perso1X = (canvas.width)/3;
         perso1Y = canvas.height-(canvas.height*0.3)-img1.height;
@@ -293,7 +293,7 @@ function fall2(){
       is_fall2 = false
       life_perso2 -=1
       if (life_perso2 == 0){
-        window.location.replace("file:///home/greg/github/set09103/project/templates/home.html");
+        window.location.href("home");
       }else {
 
         perso2X = ((canvas.width)/3)*2;
