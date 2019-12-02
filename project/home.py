@@ -16,7 +16,7 @@ def home():
 @app.route("/play")
 def play():
     id = request.args.get('id','')
-    print(id)
+    print("fdoifko",id)
     if (id == ""):
         return render_template("game.html")
     else:
