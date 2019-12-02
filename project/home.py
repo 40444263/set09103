@@ -13,9 +13,12 @@ def home():
     id = request.args.get('id','')
     print("fdoifko",id)
     if (id != ""):
+        connexion = sqlite3.connect("static/game.db")
+        curseur = connexion.cursor()
         data = curseur.execute("SELECT Path from Map where id =" + id +";")
         print(data[0])
         shutil.copy(data[0],"static/background.jpg")
+        connexion.close()
     return render_template("home.html")
 
 
@@ -38,6 +41,7 @@ def map():
                 'id':row[0]
             }
         table.append(ligne)
+    connexion.close()
 
     return render_template("map.html",table=table)
 
