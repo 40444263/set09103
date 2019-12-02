@@ -7,12 +7,12 @@ var ctx = canvas.getContext("2d");
 var img1 = new Image();
 img1.height = 100
 img1.width = 100
-// img1.src = '/static/perso.png';
-img1.src = 'perso.png';
+img1.src = '/static/perso.png';
+// img1.src = 'perso.png';
 
 var img2 = new Image();
-// img2.src = '/static/perso2.png'
- img2.src = 'perso2.png'
+img2.src = '/static/perso2.png'
+ // img2.src = 'perso2.png'
 
 img2.height = 100
 img2.width = 100
