@@ -19,7 +19,7 @@ def play():
 
 @app.route("/map")
 def map():
-    connexion = sqlite3.connect("game.db")
+    connexion = sqlite3.connect("static/game.db")
     curseur = connexion.cursor()
     data = curseur.execute("SELECT * from Map;")
     table = []
