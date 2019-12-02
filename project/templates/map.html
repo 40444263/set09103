@@ -12,18 +12,18 @@
       </header>
       <div class="list">
         <table style="width:100%">
-          <tr onclick="getTrValues(this.id)">
+          <tr>
             <th>Name</th>
             <th>number of use</th>
             <th>Image</th>
           </tr>
-          <tr>
-            {% for t in table %}
+          {% for t in table %}
+          <tr id={{t.id}}  onclick="getTrValues(this.id)">
             <td>{{ t.name }}</td>
             <td>{{ t.nbuse }}</td>
-            <td><img width="100px" height="100px" src="{{ t.path }}" alt="image"></td>
-            {% endfor %}
+            <td><img width="100px" height="100px" src="{{ t.path }}" alt="image"></td>            
           </tr>
+          {% endfor %}
           <script type="text/javascript">
            function getTrValues(idTr){
             var tr = document.getElementById(idTr);

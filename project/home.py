@@ -27,7 +27,8 @@ def map():
         ligne = {
                 'name': row[1],
                 'nbuse':row[3],
-                'path':row[2]
+                'path':row[2],
+                'id':row[0]
             }
         table.append(ligne)
 
