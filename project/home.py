@@ -16,8 +16,9 @@ def home():
         connexion = sqlite3.connect("static/game.db")
         curseur = connexion.cursor()
         data = curseur.execute("SELECT \"Path picture\" from Map where id =" + id +";")
-        print(data[0])
-        shutil.copy(data[0],"static/background.jpg")
+        for row in data:
+            print(row)
+        # shutil.copy(data[0],"static/background.jpg")
         connexion.close()
     return render_template("home.html")
 
