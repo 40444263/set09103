@@ -20,6 +20,7 @@ def play():
         return render_template("game.html")
     else:
         data = curseur.execute("SELECT Path from Map where id =" + id +";")
+        print(data[0])
         shutil.copy(data[0],"static/background.jpg")
         return render_template("game.html")
 
