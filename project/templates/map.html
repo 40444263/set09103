@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='map.css') }}">
   </head>
   <body>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='map.js') }}"></script>
     <div class="play">
       <header>
         <p>Map choose</p>
@@ -24,17 +26,7 @@
             <td><img width="100px" height="100px" src="{{ t.path }}" alt="image"></td>
           </tr>
           {% endfor %}
-          <script type="text/javascript">
-           function getTrValues(idTr){
-            var tr = document.getElementById(idTr);
-            var cells =  tr.cells
-            var cellcount = cells.length;
-            for( c=0; c<cellcount; c++) {
-              cell = cells[c];
-              cell.style.background = "#2C75FF"
-            }
-           }
-          </script>
+
         </table>
 
       </div>
