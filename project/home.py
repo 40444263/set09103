@@ -1,6 +1,7 @@
 from flask import *
 import sqlite3
 from sqlite3 import *
+import shutil
 app = Flask(__name__)
 
 @app.route("/")
@@ -14,7 +15,13 @@ def home():
 
 @app.route("/play")
 def play():
-    return render_template("game.html")
+    id = request.args.get ('id','')
+    if (id == ""):
+        return render_template("game.html")
+    else:
+        data = curseur.execute("SELECT Path from Map where id =" + id +";")
+        shutil.copy(data[0],"static/background.jpg")
+        return render_template("game.html")
 
 
 @app.route("/map")
