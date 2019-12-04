@@ -55,7 +55,7 @@ def commands():
 def characters():
     return render_template("characters.html")
 
-@app.route("/game/endgame",, methods =['POST','GET'])
+@app.route("/game/endgame",methods =['POST','GET'])
 def endgame():
     if (request.methode == "POST"):
         print("ko1")
