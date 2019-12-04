@@ -255,7 +255,7 @@ function jump2(){
     }
 }
 
-function fall1(){
+async function fall1(){
   if (is_fall1 && !saut){
     ctx.clearRect(perso1X,perso1Y,img1.width,img1.height)
     perso1Y = perso1Y+gravite
@@ -281,7 +281,9 @@ function fall1(){
         var req = new XMLHttpRequest();
         req.open("POST","/game/endgame")
         req.send(data)
-        // window.location.href("home");
+        await sleep(50);
+        window.location.href="/play/endgame"
+
       }else{
         perso1X = (canvas.width)/3;
         perso1Y = canvas.height-(canvas.height*0.3)-img1.height;

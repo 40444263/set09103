@@ -56,13 +56,26 @@ def characters():
 @app.route("/play/endgame",methods =['POST','GET'])
 def endgame():
     if (request.method == "POST"):
-        # connexion = sqlite3.connect("static/game.db")
-        # curseur = connexion.cursor()
-        # data = curseur.execute("Insert into Match value("+request.form["Player1Win"]+","+" ;")
-        print(request.form["Player1Win"])
-        
-
-    return render_template("endgame.html")
+        connexion = sqlite3.connect("static/game.db")
+        curseur = connexion.cursor()
+        data = curseur.execute("Insert into Match values("+request.form["Player1Win"]+","+request.form["Player2Win"]+","+request.form["NbHitPlayer1"]+","+request.form["NbHitPlayer2"]+","+request.form["Time"] + ";")
+        connexion.close()
+    else:
+        connexion = sqlite3.connect("static/game.db")
+        curseur = connexion.cursor()
+        data = curseur.execute("SELECT * from Match where id = (SELECT MAX(id) from Match);")
+        table = []
+        for row in data:
+            ligne = {
+                    'Player1Win': row[0],
+                    'Player2Win':row[1],
+                    'NbHitPlayer1':row[2],
+                    'NbHitPlayer2':row[3],
+                    'Time':row[4],
+                }
+            table.append(ligne)
+        connexion.close()
+        return render_template("endgame.html",info=table)
 
 
 
