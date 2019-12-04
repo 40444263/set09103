@@ -318,7 +318,7 @@ function fall2(){
         var time =end.getTime()- debut.getTime()
         data.append("Time",time)
         var req = new XMLHttpRequest();
-        req.open("POST","/play/endgame")
+        req.open("GET","/play/endgame")
         req.send(data)
         // window.location.href="/play/endgame"
       }else {
