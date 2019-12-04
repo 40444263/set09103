@@ -318,9 +318,9 @@ async function fall2(){
         var time =end.getTime()- debut.getTime()
         data.append("Time",time)
         var req = new XMLHttpRequest();
-        req.open("POST","/play/endgame")
-        req.send(data)
-        await sleep(2000)
+        req.open("POST","/play/endgame");
+        req.send(data);
+        await sleep(2000);
         window.location.href="/play/endgame"
       }else {
 
@@ -523,7 +523,9 @@ function draw() {
   }
 }
 
-
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 draw_platform()
 
