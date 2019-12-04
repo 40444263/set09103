@@ -48,7 +48,7 @@ def main():
                     	'NbHitPlayer1' INT,
                     	'NbHitPlayer2' INT,
                     	'Time' INT,
-                    	'ID' INTEGER PRIMARY KEY AUTOINCREMENT;"""
+                    	'ID' INTEGER PRIMARY KEY AUTOINCREMENT);"""
 
     connection = create_connection(path)
 
