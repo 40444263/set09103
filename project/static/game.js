@@ -233,7 +233,29 @@ function jump(){
         gravite=21
         setTimeout(jump,5);
       }
-    else {
+    else if (perso1Y > canvas.height){
+      gravite=0
+      life_perso1 -=1
+      if (life_perso1 == 0){
+        var data = new FormData();
+        data.append("Player1Win",false)
+        data.append("Player2Win",true)
+        data.append("NbHitPlayer1",nbHitPlayer1)
+        data.append("NbHitPlayer2",nbHitPlayer2)
+        var end = new Date
+        var time =end.getTime()- debut.getTime()
+        data.append("Time",time)
+        var req = new XMLHttpRequest();
+        req.open("POST","/game/endgame")
+        req.send(data)
+        await sleep(50);
+        window.location.href="/play/endgame"
+      }else{
+          perso1X = (canvas.width)/3;
+          perso1Y = canvas.height-(canvas.height*0.3)-img1.height;
+          draw_image()
+        }
+    }else {
       setTimeout(jump,5);
       }
     }
@@ -255,7 +277,24 @@ function jump2(){
         gravite2=21
         setTimeout(jump2,5);
       }
-    else {
+    else if (perso2Y > canvas.height){
+      gravite2=0
+      life_perso2 -=1
+      if (life_perso2 == 0){
+        var data = new FormData();
+        data.append("Player1Win",true)
+        data.append("Player2Win",false)
+        data.append("NbHitPlayer1",nbHitPlayer1)
+        data.append("NbHitPlayer2",nbHitPlayer2)
+        var end = new Date
+        var time =end.getTime()- debut.getTime()
+        data.append("Time",time)
+        var req = new XMLHttpRequest();
+        req.open("POST","/game/endgame")
+        req.send(data)
+        await sleep(50);
+        window.location.href="/play/endgame"
+    }else {
       setTimeout(jump2,5);
       }
     }
@@ -289,6 +328,11 @@ async function fall1(){
         req.send(data)
         await sleep(50);
         window.location.href="/play/endgame"
+      }else {
+
+        perso2X = ((canvas.width)/3)*2;
+        perso2Y = canvas.height-(canvas.height*0.3)-img1.height;
+        draw_image2()
 
       }else{
         perso1X = (canvas.width)/3;
