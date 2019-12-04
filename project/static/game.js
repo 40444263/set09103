@@ -249,7 +249,7 @@ async function jump(){
         var req = new XMLHttpRequest();
         req.open("POST","/game/endgame")
         req.send(data)
-        await sleep(50);
+        await sleep(500);
         window.location.href="/play/endgame"
       }else{
           perso1X = (canvas.width)/3;
@@ -294,7 +294,7 @@ async function jump2(){
         var req = new XMLHttpRequest();
         req.open("POST","/game/endgame")
         req.send(data)
-        await sleep(50);
+        await sleep(500);
         window.location.href="/play/endgame"
 
       }else {
@@ -334,7 +334,7 @@ async function fall1(){
         var req = new XMLHttpRequest();
         req.open("POST","/game/endgame")
         req.send(data)
-        await sleep(50);
+        await sleep(500);
         window.location.href="/play/endgame"
 
       }else{
@@ -377,7 +377,7 @@ async function fall2(){
         var req = new XMLHttpRequest();
         req.open("POST","/play/endgame");
         req.send(data);
-        await sleep(50);
+        await sleep(500);
         window.location.href="/play/endgame"
       }else {
 
