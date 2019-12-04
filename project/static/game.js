@@ -173,7 +173,7 @@ function draw_platform(){
 }
 
 function draw_sword1(){
-  ctx.clearRect(0,0,50,100);
+  ctx.clearRect(0,0,0,-100);
   // ctx.beginPath();
   // ctx.fillStyle = "FFFFFF";
   // ctx.rect(0,0,50,-100);
@@ -196,7 +196,7 @@ function draw_sword1(){
 
 function draw_sword2(){
 
-  ctx.clearRect(0,0,50,100);
+  ctx.clearRect(0,0,-50,-100);
   // ctx.beginPath();
   // ctx.fillStyle = "FFFFFF";
   // ctx.rect(0,0,-50,-100);
