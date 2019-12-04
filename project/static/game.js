@@ -281,7 +281,7 @@ function fall1(){
         var req = new XMLHttpRequest();
         req.open("POST","/game/endgame")
         req.send(data)
-        // window.location.href("home");
+        window.location.href("home");
       }else{
         perso1X = (canvas.width)/3;
         perso1Y = canvas.height-(canvas.height*0.3)-img1.height;
