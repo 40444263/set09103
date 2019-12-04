@@ -56,7 +56,7 @@ def characters():
 @app.route("/play/endgame",methods =['POST','GET'])
 def endgame():
     if (request.method == "POST"):
-        print("ko1")
+        print(request.form)
         return redirect(url_for('home'))
     return render_template("endgame.html")
 
