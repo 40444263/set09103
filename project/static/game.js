@@ -200,7 +200,7 @@ function draw_sword2(){
   // ctx.fillStyle = "FFFFFF";
   // ctx.rect(0,0,-50,-100);
   // ctx.stroke();
-  ctx.drawImage(img3,-50,-100);
+  ctx.drawImage(img3,-5,-100);
   if (perso1X+img1.width > perso2X-100 && perso1X+img1.width < perso2X){
     perso1X = perso1X-15
     x_sword1= x_sword1-15
