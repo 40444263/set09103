@@ -42,7 +42,7 @@ var y_plat = canvas.height-(canvas.height*0.3)
 var nbHitPlayer1 = 0
 var nbHitPlayer2 = 0
 
-var debut = Date.getTime()
+var debut = new Date;
 
 
 var rightPressed1 = false;
@@ -275,7 +275,8 @@ function fall1(){
         data.append("Player2Win",true)
         data.append("NbHitPlayer1",nbHitPlayer1)
         data.append("NbHitPlayer2",nbHitPlayer2)
-        var time =Date.getTime()- debut
+        var end = new Date
+        var time =debut.getTime()- end.getTime()
         data.append("Time",time)
         var req = new XMLHttpRequest();
         req.open("POST","/game/endgame")
