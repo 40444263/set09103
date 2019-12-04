@@ -60,6 +60,7 @@ def endgame():
         # curseur = connexion.cursor()
         # data = curseur.execute("Insert into Match value("+request.form["Player1Win"]+","+" ;")
         print(request.form["Player1Win"])
+        return "jfod"
     return render_template("endgame.html")
 
 
