@@ -271,12 +271,12 @@ function fall1(){
       life_perso1 -=1
       if (life_perso1 == 0){
         var data = new FormData();
-        data.append("Player1Win",false)
+        data.append(false)
         data.append("Player2Win",true)
         data.append("NbHitPlayer1",nbHitPlayer1)
         data.append("NbHitPlayer2",nbHitPlayer2)
         var end = new Date
-        var time =debut.getTime()- end.getTime()
+        var time =end.getTime()- debut.getTime()
         data.append("Time",time)
         var req = new XMLHttpRequest();
         req.open("POST","/game/endgame")
@@ -315,7 +315,7 @@ function fall2(){
         data.append("NbHitPlayer1",nbHitPlayer1)
         data.append("NbHitPlayer2",nbHitPlayer2)
         var end = new Date
-        var time =debut.getTime()- end.getTime()
+        var time =end.getTime()- debut.getTime()
         data.append("Time",time)
         var req = new XMLHttpRequest();
         req.open("POST","/play/endgame")
