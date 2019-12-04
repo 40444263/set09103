@@ -309,7 +309,17 @@ function fall2(){
       is_fall2 = false
       life_perso2 -=1
       if (life_perso2 == 0){
-        window.location.href="home";
+        var data = new FormData();
+        data.append("Player1Win",true)
+        data.append("Player2Win",false)
+        data.append("NbHitPlayer1",nbHitPlayer1)
+        data.append("NbHitPlayer2",nbHitPlayer2)
+        var end = new Date
+        var time =debut.getTime()- end.getTime()
+        data.append("Time",time)
+        var req = new XMLHttpRequest();
+        req.open("POST","/game/endgame")
+        req.send(data)
       }else {
 
         perso2X = ((canvas.width)/3)*2;
