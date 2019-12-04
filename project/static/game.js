@@ -87,7 +87,7 @@ function keyDownHandler(e) {
     if(e.keyCode == 38) {
         upPressed1 = true
     }
-    if(e.keyCode == 32){
+    if(e.keyCode == 96){
         hitPressed1 = true
     }
 // perso2
@@ -100,7 +100,7 @@ function keyDownHandler(e) {
     if(e.keyCode == 87) {
         upPressed2 = true
     }
-    if(e.keyCode == 96){
+    if(e.keyCode == 32){
         hitPressed2 = true
     }
 }
@@ -114,7 +114,7 @@ function keyUpHandler(e) {
     if(e.keyCode == 38) {
         upPressed1 = false
     }
-    if(e.keyCode == 32){
+    if(e.keyCode == 96){
       hitPressed1 = false
     }
 
@@ -128,7 +128,7 @@ function keyUpHandler(e) {
       if(e.keyCode == 87) {
           upPressed2 = false
       }
-      if(e.keyCode == 96){
+      if(e.keyCode == 32){
         hitPressed2 = false
       }
 }
