@@ -318,8 +318,9 @@ function fall2(){
         var time =debut.getTime()- end.getTime()
         data.append("Time",time)
         var req = new XMLHttpRequest();
-        req.open("POST","/game/endgame")
+        req.open("POST","/play/endgame")
         req.send(data)
+        window.location.href="/play/endgame"
       }else {
 
         perso2X = ((canvas.width)/3)*2;
