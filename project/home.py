@@ -57,6 +57,7 @@ def characters():
 def endgame():
     if (request.method == "POST"):
         print("ko1")
+        return redirect(url_for('home'))
     return render_template("endgame.html")
 
 
