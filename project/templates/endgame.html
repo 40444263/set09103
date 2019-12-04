@@ -11,21 +11,17 @@
         <p>End of the game !</p>
       </header>
       <div class="list">
-        <table style="width:100%">
-          <tr>
-            <th>Name</th>
-            <th>number of use</th>
-            <th>Image</th>
-          </tr>
-          {% for t in table %}
-          <tr id={{t.id}}  onclick="getTrValues(this.id)">
-            <td>{{ t.name }}</td>
-            <td>{{ t.nbuse }}</td>
-            <td><img width="100px" height="100px" src="{{ t.path }}" alt="image"></td>
-          </tr>
-          {% endfor %}
+        {%if "info.Player1Win" is "true" %}
+          <p>Player 1 win</p>
+        {% endif %}
+        {%if "info.Player1Win" is "false" %}
+          <p>Player 2 win</p>
+        {% endif %}
 
-        </table>
+        <p>Number of hit player one : {{info.NbHitPlayer1}}</p>
+        <p>Number of hit player two : {{info.NbHitPlayer2}}</p>
+        <p>Time of the game : {{info.Time}}</p>
+
 
       </div>
     </div>

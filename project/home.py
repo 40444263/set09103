@@ -67,7 +67,6 @@ def endgame():
         connexion = sqlite3.connect("static/game.db")
         curseur = connexion.cursor()
         data = curseur.execute("SELECT * from Match where id = (SELECT MAX(id) from Match);")
-        table = []
         for row in data:
             ligne = {
                     'Player1Win': row[0],
@@ -76,9 +75,8 @@ def endgame():
                     'NbHitPlayer2':row[3],
                     'Time':row[4],
                 }
-            table.append(ligne)
         connexion.close()
-        return render_template("endgame.html",info=table)
+        return render_template("endgame.html",info=ligne)
 
 
 
