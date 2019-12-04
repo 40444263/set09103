@@ -2,4 +2,4 @@ commands to do:
 
 $ export FLASK_APP=home.py
 $ export FLASK_ENV=development
-$ flask run
+$ python -m flask run --host=0.0.0.0
