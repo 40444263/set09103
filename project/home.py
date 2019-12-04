@@ -58,7 +58,8 @@ def endgame():
     if (request.method == "POST"):
         connexion = sqlite3.connect("static/game.db")
         curseur = connexion.cursor()
-        data = curseur.execute("Insert into Match (Player1Win,Player2Win,NbHitPlayer1,NbHitPlayer2,Time) values("+str(request.form["Player1Win"])+","+request.form["Player2Win"]+","+request.form["NbHitPlayer1"]+","+request.form["NbHitPlayer2"]+","+request.form["Time"] + ");")
+        requete = "Insert into Match (Player1Win,Player2Win,NbHitPlayer1,NbHitPlayer2,Time) values("+request.form["Player1Win"]+","+request.form["Player2Win"]+","+request.form["NbHitPlayer1"]+","+request.form["NbHitPlayer2"]+","+request.form["Time"] + ");"
+        data = curseur.execute(requete)
         connexion.close()
     else:
         connexion = sqlite3.connect("static/game.db")
