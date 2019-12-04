@@ -39,6 +39,11 @@ var y_sword2 = perso2Y+(img2.height/2)
 var x_plat = canvas.width-(canvas.width*0.8)
 var y_plat = canvas.height-(canvas.height*0.3)
 
+var nbHitPlayer1 = 0
+var nbHitPlayer2 = 0
+
+var debut = Date.getTime()
+
 
 var rightPressed1 = false;
 var leftPressed1 = false;
@@ -172,7 +177,7 @@ function draw_sword1(){
   if (perso2X < perso1X+img1.width+100 && perso2X > perso1X+img1.width){
     perso2X = perso2X+15
     x_sword2= x_sword2+15
-    console.log("bite")
+    nbHitPlayer1 += 1
     if (perso2X>canvas.width*0.8 && !is_fall2){
         is_fall2 = true
         fall2()
@@ -194,7 +199,7 @@ function draw_sword2(){
   if (perso1X+img1.width > perso2X-100 && perso1X+img1.width < perso2X){
     perso1X = perso1X-15
     x_sword1= x_sword1-15
-    console.log("bite")
+    nbHitPlayer2 += 1
     if (perso1X<(canvas.width*0.2-(img1.width-5))&& !is_fall1){
         is_fall1 = true
         fall1()
@@ -265,7 +270,17 @@ function fall1(){
       is_fall1 = false
       life_perso1 -=1
       if (life_perso1 == 0){
-        window.location.href("home");
+        var data = new FormData();
+        data.append("Player1Win",false)
+        data.append("Player2Win",true)
+        data.append("NbHitPlayer1",nbHitPlayer1)
+        data.append("NbHitPlayer2",nbHitPlayer2)
+        var time =Date.getTime()- debut
+        data.append("Time",time)
+        var req = new XMLHttpRequest();
+        req.open("POST","/game/endgame")
+        req.send(data)
+        // window.location.href("home");
       }else{
         perso1X = (canvas.width)/3;
         perso1Y = canvas.height-(canvas.height*0.3)-img1.height;
@@ -293,7 +308,7 @@ function fall2(){
       is_fall2 = false
       life_perso2 -=1
       if (life_perso2 == 0){
-        window.location.href("home");
+        window.location.href="home";
       }else {
 
         perso2X = ((canvas.width)/3)*2;

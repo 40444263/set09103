@@ -2,6 +2,7 @@ from flask import *
 import sqlite3
 from sqlite3 import *
 import shutil
+import json
 app = Flask(__name__)
 
 @app.route("/")
@@ -52,6 +53,15 @@ def commands():
 
 @app.route("/characters")
 def characters():
-    return "characters a faire"
+    return render_template("characters.html")
+
+@app.route("/game/endgame")
+def endgame():
+    return "ok"
+
+
+
+
+
 if __name__ == " __main__ ":
     app.run ( host ='0.0.0.0 ', debug = True )

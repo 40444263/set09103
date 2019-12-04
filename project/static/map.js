@@ -29,5 +29,4 @@ function changeMap(){
   var id = tr_select.toString()
   link = link.concat(id)
   window.location.href=link
-  console.log(link)
 }
