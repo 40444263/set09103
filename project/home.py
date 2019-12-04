@@ -60,6 +60,7 @@ def endgame():
         curseur = connexion.cursor()
         requete = "Insert into Match (Player1Win,Player2Win,NbHitPlayer1,NbHitPlayer2,Time) values(?,?,?,?,?);"
         curseur.execute(requete,(str(request.form["Player1Win"]),str(request.form["Player2Win"]),request.form["NbHitPlayer2"],request.form["NbHitPlayer2"],request.form["Time"]))
+        connexion.comit()
         connexion.close()
         return "ok"
     else:
