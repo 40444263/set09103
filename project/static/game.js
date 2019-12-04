@@ -294,6 +294,12 @@ async function jump2(){
         req.send(data)
         await sleep(50);
         window.location.href="/play/endgame"
+
+      }else {
+
+        perso2X = ((canvas.width)/3)*2;
+        perso2Y = canvas.height-(canvas.height*0.3)-img1.height;
+        draw_image2()}
     }else {
       setTimeout(jump2,5);
       }
@@ -328,11 +334,6 @@ async function fall1(){
         req.send(data)
         await sleep(50);
         window.location.href="/play/endgame"
-      }else {
-
-        perso2X = ((canvas.width)/3)*2;
-        perso2Y = canvas.height-(canvas.height*0.3)-img1.height;
-        draw_image2()
 
       }else{
         perso1X = (canvas.width)/3;
