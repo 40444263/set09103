@@ -320,6 +320,7 @@ function fall2(){
         var req = new XMLHttpRequest();
         req.open("POST","/play/endgame")
         req.send(data)
+        await sleep(2000);
         window.location.href="/play/endgame"
       }else {
 
