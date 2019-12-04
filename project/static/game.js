@@ -173,6 +173,7 @@ function draw_platform(){
 }
 
 function draw_sword1(){
+  ctx.clearRect(0,0,50,100);
   // ctx.beginPath();
   // ctx.fillStyle = "FFFFFF";
   // ctx.rect(0,0,50,-100);
@@ -195,12 +196,12 @@ function draw_sword1(){
 
 function draw_sword2(){
 
-  // ctx.clearRect(0,0,50,100);
+  ctx.clearRect(0,0,50,100);
   // ctx.beginPath();
   // ctx.fillStyle = "FFFFFF";
   // ctx.rect(0,0,-50,-100);
   // ctx.stroke();
-  ctx.drawImage(img3,-50,-100);
+  ctx.drawImage(img3,-5,-100);
   if (perso1X+img1.width > perso2X-100 && perso1X+img1.width < perso2X){
     perso1X = perso1X-15
     x_sword1= x_sword1-15
