@@ -11,10 +11,10 @@
         <p>End of the game !</p>
       </header>
       <div class="list">
-        {%if {{info.Player1Win}} is "true" %}
+        {% Player1Win is "true" %}
           <p>Player 1 win</p>
         {% endif %}
-        {%if {{info.Player1Win}} is "false" %}
+        {% if {{info.Player1Win}} is "false" %}
           <p>Player 2 win</p>
         {% endif %}
 
