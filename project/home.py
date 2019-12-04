@@ -12,13 +12,11 @@ def root():
 @app.route("/home")
 def home():
     id = request.args.get('id','')
-    print("fdoifko",id)
     if (id != ""):
         connexion = sqlite3.connect("static/game.db")
         curseur = connexion.cursor()
         data = curseur.execute("SELECT \"Path picture\" from Map where id =" + id +";")
         for row in data:
-            print(row[0])
             shutil.copy(row[0],"static/background.jpg")
         connexion.close()
     return render_template("home.html")
