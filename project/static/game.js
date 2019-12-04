@@ -216,7 +216,7 @@ function draw_sword2(){
   }
 }
 
-function jump(){
+async function jump(){
   if (saut){
     // ctx.clearRect(perso1X,perso1Y,img1.width,img1.height)
     perso1Y = perso1Y-(20-gravite)
@@ -261,7 +261,7 @@ function jump(){
     }
 }
 
-function jump2(){
+async function jump2(){
   if (saut2){
     perso2Y = perso2Y-(20-gravite2)
     y_sword2 = y_sword2-(20-gravite2)
