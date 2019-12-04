@@ -271,7 +271,7 @@ function fall1(){
       life_perso1 -=1
       if (life_perso1 == 0){
         var data = new FormData();
-        data.append(false)
+        data.append("Player1Win",false)
         data.append("Player2Win",true)
         data.append("NbHitPlayer1",nbHitPlayer1)
         data.append("NbHitPlayer2",nbHitPlayer2)
