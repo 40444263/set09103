@@ -235,6 +235,7 @@ async function jump(){
       }
     else if (perso1Y > canvas.height){
       gravite=0
+      saut = false
       life_perso1 -=1
       if (life_perso1 == 0){
         var data = new FormData();
@@ -280,6 +281,7 @@ async function jump2(){
     else if (perso2Y > canvas.height){
       gravite2=0
       life_perso2 -=1
+      saut2 = false
       if (life_perso2 == 0){
         var data = new FormData();
         data.append("Player1Win",true)
