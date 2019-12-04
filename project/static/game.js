@@ -17,6 +17,9 @@ img2.src = '/static/perso2.png';
 img2.height = 100;
 img2.width = 100;
 
+var img3 = new Image();
+img3.src = '/static/epee.png';
+
 
 var height_sword = 100;
 var weight_sword = 50;
@@ -170,10 +173,11 @@ function draw_platform(){
 }
 
 function draw_sword1(){
-  ctx.beginPath();
-  ctx.fillStyle = "FFFFFF";
-  ctx.rect(0,0,50,-100);
-  ctx.stroke();
+  // ctx.beginPath();
+  // ctx.fillStyle = "FFFFFF";
+  // ctx.rect(0,0,50,-100);
+  // ctx.stroke();
+  ctx.drawImage(img3,50,-100);
   if (perso2X < perso1X+img1.width+100 && perso2X > perso1X+img1.width){
     perso2X = perso2X+15
     x_sword2= x_sword2+15
@@ -192,10 +196,11 @@ function draw_sword1(){
 function draw_sword2(){
 
   // ctx.clearRect(0,0,50,100);
-  ctx.beginPath();
-  ctx.fillStyle = "FFFFFF";
-  ctx.rect(0,0,-50,-100);
-  ctx.stroke();
+  // ctx.beginPath();
+  // ctx.fillStyle = "FFFFFF";
+  // ctx.rect(0,0,-50,-100);
+  // ctx.stroke();
+  ctx.drawImage(img3,50,-100);
   if (perso1X+img1.width > perso2X-100 && perso1X+img1.width < perso2X){
     perso1X = perso1X-15
     x_sword1= x_sword1-15
