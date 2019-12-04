@@ -320,7 +320,7 @@ function fall2(){
         var req = new XMLHttpRequest();
         req.open("POST","/play/endgame")
         req.send(data)
-        window.location.href="/play/endgame"
+        // window.location.href="/play/endgame"
       }else {
 
         perso2X = ((canvas.width)/3)*2;
