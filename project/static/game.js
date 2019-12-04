@@ -340,6 +340,8 @@ async function fall1(){
       }else{
         perso1X = (canvas.width)/3;
         perso1Y = canvas.height-(canvas.height*0.3)-img1.height;
+        x_sword1 = perso1X+img1.width
+        y_sword1 = perso1Y+(img1.height/2)
         draw_image()
       }
     }
@@ -381,6 +383,8 @@ async function fall2(){
 
         perso2X = ((canvas.width)/3)*2;
         perso2Y = canvas.height-(canvas.height*0.3)-img1.height;
+        x_sword2 = perso2X
+        y_sword2 = perso2Y+(img2.height/2)
         draw_image2()
       }
     }
